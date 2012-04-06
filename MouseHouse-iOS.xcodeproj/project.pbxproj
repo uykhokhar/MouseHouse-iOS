@@ -1,0 +1,453 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6535A187152EA21400384FF0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6535A186152EA21400384FF0 /* UIKit.framework */; };
+		6535A189152EA21400384FF0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6535A188152EA21400384FF0 /* Foundation.framework */; };
+		6535A18B152EA21400384FF0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6535A18A152EA21400384FF0 /* CoreGraphics.framework */; };
+		6535A191152EA21400384FF0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6535A18F152EA21400384FF0 /* InfoPlist.strings */; };
+		6535A193152EA21400384FF0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A192152EA21400384FF0 /* main.m */; };
+		6535A197152EA21400384FF0 /* MHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A196152EA21400384FF0 /* MHAppDelegate.m */; };
+		6535A19A152EA21400384FF0 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6535A198152EA21400384FF0 /* MainStoryboard.storyboard */; };
+		6535A19D152EA21400384FF0 /* MHMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A19C152EA21400384FF0 /* MHMasterViewController.m */; };
+		6535A1A0152EA21400384FF0 /* MHDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A19F152EA21400384FF0 /* MHDetailViewController.m */; };
+		6535A1A8152EA21400384FF0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6535A1A7152EA21400384FF0 /* SenTestingKit.framework */; };
+		6535A1A9152EA21400384FF0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6535A186152EA21400384FF0 /* UIKit.framework */; };
+		6535A1AA152EA21400384FF0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6535A188152EA21400384FF0 /* Foundation.framework */; };
+		6535A1B2152EA21400384FF0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6535A1B0152EA21400384FF0 /* InfoPlist.strings */; };
+		6535A1B5152EA21400384FF0 /* MouseHouse_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1B4152EA21400384FF0 /* MouseHouse_iOSTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6535A1AB152EA21400384FF0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6535A179152EA21400384FF0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6535A181152EA21400384FF0;
+			remoteInfo = "MouseHouse-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6535A182152EA21400384FF0 /* MouseHouse-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MouseHouse-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6535A186152EA21400384FF0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6535A188152EA21400384FF0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6535A18A152EA21400384FF0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6535A18E152EA21400384FF0 /* MouseHouse-iOS-Info.plist */ = {isa = PBXFileReference; path = "MouseHouse-iOS-Info.plist"; sourceTree = "<group>"; };
+		6535A190152EA21400384FF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6535A192152EA21400384FF0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6535A194152EA21400384FF0 /* MouseHouse-iOS-Prefix.pch */ = {isa = PBXFileReference; path = "MouseHouse-iOS-Prefix.pch"; sourceTree = "<group>"; };
+		6535A195152EA21400384FF0 /* MHAppDelegate.h */ = {isa = PBXFileReference; path = MHAppDelegate.h; sourceTree = "<group>"; };
+		6535A196152EA21400384FF0 /* MHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHAppDelegate.m; sourceTree = "<group>"; };
+		6535A199152EA21400384FF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		6535A19B152EA21400384FF0 /* MHMasterViewController.h */ = {isa = PBXFileReference; path = MHMasterViewController.h; sourceTree = "<group>"; };
+		6535A19C152EA21400384FF0 /* MHMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHMasterViewController.m; sourceTree = "<group>"; };
+		6535A19E152EA21400384FF0 /* MHDetailViewController.h */ = {isa = PBXFileReference; path = MHDetailViewController.h; sourceTree = "<group>"; };
+		6535A19F152EA21400384FF0 /* MHDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHDetailViewController.m; sourceTree = "<group>"; };
+		6535A1A6152EA21400384FF0 /* MouseHouse-iOSTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MouseHouse-iOSTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6535A1A7152EA21400384FF0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		6535A1AF152EA21400384FF0 /* MouseHouse-iOSTests-Info.plist */ = {isa = PBXFileReference; path = "MouseHouse-iOSTests-Info.plist"; sourceTree = "<group>"; };
+		6535A1B1152EA21400384FF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6535A1B3152EA21400384FF0 /* MouseHouse_iOSTests.h */ = {isa = PBXFileReference; path = MouseHouse_iOSTests.h; sourceTree = "<group>"; };
+		6535A1B4152EA21400384FF0 /* MouseHouse_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MouseHouse_iOSTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6535A17F152EA21400384FF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6535A187152EA21400384FF0 /* UIKit.framework in Frameworks */,
+				6535A189152EA21400384FF0 /* Foundation.framework in Frameworks */,
+				6535A18B152EA21400384FF0 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6535A1A2152EA21400384FF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6535A1A8152EA21400384FF0 /* SenTestingKit.framework in Frameworks */,
+				6535A1A9152EA21400384FF0 /* UIKit.framework in Frameworks */,
+				6535A1AA152EA21400384FF0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6535A177152EA21400384FF0 = {
+			isa = PBXGroup;
+			children = (
+				6535A18C152EA21400384FF0 /* MouseHouse-iOS */,
+				6535A1AD152EA21400384FF0 /* MouseHouse-iOSTests */,
+				6535A185152EA21400384FF0 /* Frameworks */,
+				6535A183152EA21400384FF0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6535A183152EA21400384FF0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6535A182152EA21400384FF0 /* MouseHouse-iOS.app */,
+				6535A1A6152EA21400384FF0 /* MouseHouse-iOSTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6535A185152EA21400384FF0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6535A186152EA21400384FF0 /* UIKit.framework */,
+				6535A188152EA21400384FF0 /* Foundation.framework */,
+				6535A18A152EA21400384FF0 /* CoreGraphics.framework */,
+				6535A1A7152EA21400384FF0 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6535A18C152EA21400384FF0 /* MouseHouse-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6535A195152EA21400384FF0 /* MHAppDelegate.h */,
+				6535A196152EA21400384FF0 /* MHAppDelegate.m */,
+				6535A198152EA21400384FF0 /* MainStoryboard.storyboard */,
+				6535A19B152EA21400384FF0 /* MHMasterViewController.h */,
+				6535A19C152EA21400384FF0 /* MHMasterViewController.m */,
+				6535A19E152EA21400384FF0 /* MHDetailViewController.h */,
+				6535A19F152EA21400384FF0 /* MHDetailViewController.m */,
+				6535A18D152EA21400384FF0 /* Supporting Files */,
+			);
+			path = "MouseHouse-iOS";
+			sourceTree = "<group>";
+		};
+		6535A18D152EA21400384FF0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6535A18E152EA21400384FF0 /* MouseHouse-iOS-Info.plist */,
+				6535A18F152EA21400384FF0 /* InfoPlist.strings */,
+				6535A192152EA21400384FF0 /* main.m */,
+				6535A194152EA21400384FF0 /* MouseHouse-iOS-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6535A1AD152EA21400384FF0 /* MouseHouse-iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				6535A1B3152EA21400384FF0 /* MouseHouse_iOSTests.h */,
+				6535A1B4152EA21400384FF0 /* MouseHouse_iOSTests.m */,
+				6535A1AE152EA21400384FF0 /* Supporting Files */,
+			);
+			path = "MouseHouse-iOSTests";
+			sourceTree = "<group>";
+		};
+		6535A1AE152EA21400384FF0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6535A1AF152EA21400384FF0 /* MouseHouse-iOSTests-Info.plist */,
+				6535A1B0152EA21400384FF0 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6535A181152EA21400384FF0 /* MouseHouse-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6535A1B8152EA21400384FF0 /* Build configuration list for PBXNativeTarget "MouseHouse-iOS" */;
+			buildPhases = (
+				6535A17E152EA21400384FF0 /* Sources */,
+				6535A17F152EA21400384FF0 /* Frameworks */,
+				6535A180152EA21400384FF0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MouseHouse-iOS";
+			productName = "MouseHouse-iOS";
+			productReference = 6535A182152EA21400384FF0 /* MouseHouse-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6535A1A5152EA21400384FF0 /* MouseHouse-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6535A1BB152EA21400384FF0 /* Build configuration list for PBXNativeTarget "MouseHouse-iOSTests" */;
+			buildPhases = (
+				6535A1A1152EA21400384FF0 /* Sources */,
+				6535A1A2152EA21400384FF0 /* Frameworks */,
+				6535A1A3152EA21400384FF0 /* Resources */,
+				6535A1A4152EA21400384FF0 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6535A1AC152EA21400384FF0 /* PBXTargetDependency */,
+			);
+			name = "MouseHouse-iOSTests";
+			productName = "MouseHouse-iOSTests";
+			productReference = 6535A1A6152EA21400384FF0 /* MouseHouse-iOSTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6535A179152EA21400384FF0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MH;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 6535A17C152EA21400384FF0 /* Build configuration list for PBXProject "MouseHouse-iOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6535A177152EA21400384FF0;
+			productRefGroup = 6535A183152EA21400384FF0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6535A181152EA21400384FF0 /* MouseHouse-iOS */,
+				6535A1A5152EA21400384FF0 /* MouseHouse-iOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6535A180152EA21400384FF0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6535A191152EA21400384FF0 /* InfoPlist.strings in Resources */,
+				6535A19A152EA21400384FF0 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6535A1A3152EA21400384FF0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6535A1B2152EA21400384FF0 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6535A1A4152EA21400384FF0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6535A17E152EA21400384FF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6535A193152EA21400384FF0 /* main.m in Sources */,
+				6535A197152EA21400384FF0 /* MHAppDelegate.m in Sources */,
+				6535A19D152EA21400384FF0 /* MHMasterViewController.m in Sources */,
+				6535A1A0152EA21400384FF0 /* MHDetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6535A1A1152EA21400384FF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6535A1B5152EA21400384FF0 /* MouseHouse_iOSTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6535A1AC152EA21400384FF0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6535A181152EA21400384FF0 /* MouseHouse-iOS */;
+			targetProxy = 6535A1AB152EA21400384FF0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6535A18F152EA21400384FF0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6535A190152EA21400384FF0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6535A198152EA21400384FF0 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6535A199152EA21400384FF0 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		6535A1B0152EA21400384FF0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6535A1B1152EA21400384FF0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6535A1B6152EA21400384FF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		6535A1B7152EA21400384FF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6535A1B9152EA21400384FF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MouseHouse-iOS/MouseHouse-iOS-Prefix.pch";
+				INFOPLIST_FILE = "MouseHouse-iOS/MouseHouse-iOS-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6535A1BA152EA21400384FF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MouseHouse-iOS/MouseHouse-iOS-Prefix.pch";
+				INFOPLIST_FILE = "MouseHouse-iOS/MouseHouse-iOS-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		6535A1BC152EA21400384FF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MouseHouse-iOS.app/MouseHouse-iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MouseHouse-iOS/MouseHouse-iOS-Prefix.pch";
+				INFOPLIST_FILE = "MouseHouse-iOSTests/MouseHouse-iOSTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		6535A1BD152EA21400384FF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MouseHouse-iOS.app/MouseHouse-iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MouseHouse-iOS/MouseHouse-iOS-Prefix.pch";
+				INFOPLIST_FILE = "MouseHouse-iOSTests/MouseHouse-iOSTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6535A17C152EA21400384FF0 /* Build configuration list for PBXProject "MouseHouse-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6535A1B6152EA21400384FF0 /* Debug */,
+				6535A1B7152EA21400384FF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6535A1B8152EA21400384FF0 /* Build configuration list for PBXNativeTarget "MouseHouse-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6535A1B9152EA21400384FF0 /* Debug */,
+				6535A1BA152EA21400384FF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6535A1BB152EA21400384FF0 /* Build configuration list for PBXNativeTarget "MouseHouse-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6535A1BC152EA21400384FF0 /* Debug */,
+				6535A1BD152EA21400384FF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6535A179152EA21400384FF0 /* Project object */;
+}
