@@ -27,6 +27,10 @@
 		6535A1CC152EAC4700384FF0 /* MHSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1C6152EAC4700384FF0 /* MHSignInViewController.m */; };
 		6535A1CD152EAC4700384FF0 /* MHSignUpViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1C7152EAC4700384FF0 /* MHSignUpViewController.h */; };
 		6535A1CE152EAC4700384FF0 /* MHSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1C8152EAC4700384FF0 /* MHSignUpViewController.m */; };
+		6535A1D2152EACCE00384FF0 /* MHViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1D0152EACCE00384FF0 /* MHViewController.h */; };
+		6535A1D3152EACCE00384FF0 /* MHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1D1152EACCE00384FF0 /* MHViewController.m */; };
+		6535A1D6152EB0E000384FF0 /* MHCageDetailsViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1D4152EB0E000384FF0 /* MHCageDetailsViewController.h */; };
+		6535A1D7152EB0E000384FF0 /* MHCageDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1D5152EB0E000384FF0 /* MHCageDetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +71,10 @@
 		6535A1C6152EAC4700384FF0 /* MHSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHSignInViewController.m; sourceTree = "<group>"; };
 		6535A1C7152EAC4700384FF0 /* MHSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = MHSignUpViewController.h; sourceTree = "<group>"; };
 		6535A1C8152EAC4700384FF0 /* MHSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHSignUpViewController.m; sourceTree = "<group>"; };
+		6535A1D0152EACCE00384FF0 /* MHViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = MHViewController.h; sourceTree = "<group>"; };
+		6535A1D1152EACCE00384FF0 /* MHViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHViewController.m; sourceTree = "<group>"; };
+		6535A1D4152EB0E000384FF0 /* MHCageDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = MHCageDetailsViewController.h; sourceTree = "<group>"; };
+		6535A1D5152EB0E000384FF0 /* MHCageDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHCageDetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,11 +137,15 @@
 				6535A1CF152EAC4E00384FF0 /* Authentication */,
 				6535A195152EA21400384FF0 /* MHAppDelegate.h */,
 				6535A196152EA21400384FF0 /* MHAppDelegate.m */,
-				6535A198152EA21400384FF0 /* MainStoryboard.storyboard */,
+				6535A1D0152EACCE00384FF0 /* MHViewController.h */,
+				6535A1D1152EACCE00384FF0 /* MHViewController.m */,
 				6535A19B152EA21400384FF0 /* MHRacksViewController.h */,
 				6535A19C152EA21400384FF0 /* MHRacksViewController.m */,
 				6535A19E152EA21400384FF0 /* MHCagesViewController.h */,
 				6535A19F152EA21400384FF0 /* MHCagesViewController.m */,
+				6535A1D4152EB0E000384FF0 /* MHCageDetailsViewController.h */,
+				6535A1D5152EB0E000384FF0 /* MHCageDetailsViewController.m */,
+				6535A198152EA21400384FF0 /* MainStoryboard.storyboard */,
 				6535A18D152EA21400384FF0 /* Supporting Files */,
 			);
 			path = "MouseHouse-iOS";
@@ -299,6 +311,10 @@
 				6535A1CC152EAC4700384FF0 /* MHSignInViewController.m in Sources */,
 				6535A1CD152EAC4700384FF0 /* MHSignUpViewController.h in Sources */,
 				6535A1CE152EAC4700384FF0 /* MHSignUpViewController.m in Sources */,
+				6535A1D2152EACCE00384FF0 /* MHViewController.h in Sources */,
+				6535A1D3152EACCE00384FF0 /* MHViewController.m in Sources */,
+				6535A1D6152EB0E000384FF0 /* MHCageDetailsViewController.h in Sources */,
+				6535A1D7152EB0E000384FF0 /* MHCageDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
