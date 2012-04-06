@@ -26,6 +26,7 @@
 		6535A1CE152EAC4700384FF0 /* MHSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1C8152EAC4700384FF0 /* MHSignUpViewController.m */; };
 		6535A1D3152EACCE00384FF0 /* MHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1D1152EACCE00384FF0 /* MHViewController.m */; };
 		6535A1D7152EB0E000384FF0 /* MHRackDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1D5152EB0E000384FF0 /* MHRackDetailsViewController.m */; };
+		6535A1D9152EB9C200384FF0 /* mockup_cage_card.png in Resources */ = {isa = PBXBuildFile; fileRef = 6535A1D8152EB9C200384FF0 /* mockup_cage_card.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		6535A1D1152EACCE00384FF0 /* MHViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHViewController.m; sourceTree = "<group>"; };
 		6535A1D4152EB0E000384FF0 /* MHRackDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = MHRackDetailsViewController.h; sourceTree = "<group>"; };
 		6535A1D5152EB0E000384FF0 /* MHRackDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHRackDetailsViewController.m; sourceTree = "<group>"; };
+		6535A1D8152EB9C200384FF0 /* mockup_cage_card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mockup_cage_card.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				6535A1D4152EB0E000384FF0 /* MHRackDetailsViewController.h */,
 				6535A1D5152EB0E000384FF0 /* MHRackDetailsViewController.m */,
 				6535A198152EA21400384FF0 /* MainStoryboard.storyboard */,
+				6535A1D8152EB9C200384FF0 /* mockup_cage_card.png */,
 				6535A18D152EA21400384FF0 /* Supporting Files */,
 			);
 			path = "MouseHouse-iOS";
@@ -262,6 +265,7 @@
 			files = (
 				6535A191152EA21400384FF0 /* InfoPlist.strings in Resources */,
 				6535A19A152EA21400384FF0 /* MainStoryboard.storyboard in Resources */,
+				6535A1D9152EB9C200384FF0 /* mockup_cage_card.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
