@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class MHDetailViewController;
+@class MHCagesViewController;
 
-@interface MHMasterViewController : UITableViewController
+@interface MHRacksViewController : UITableViewController
 
-@property (strong, nonatomic) MHDetailViewController *detailViewController;
+@property (strong, nonatomic) MHCagesViewController *cagesViewController;
 
 @end

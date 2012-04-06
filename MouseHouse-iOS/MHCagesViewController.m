@@ -6,25 +6,27 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MHDetailViewController.h"
+#import "MHCagesViewController.h"
 
-@interface MHDetailViewController ()
+@interface MHCagesViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 - (void)configureView;
 @end
 
-@implementation MHDetailViewController
+@implementation MHCagesViewController
 
-@synthesize detailItem = _detailItem;
-@synthesize detailDescriptionLabel = _detailDescriptionLabel;
+@synthesize rack = _rack;
+@synthesize rackColumnHeaderScrollView = _rackColumnHeaderScrollView;
+@synthesize rackRowHeaderScrollView = _rackRowHeaderScrollView;
+@synthesize cagesScrollView = _cagesScrollView;
 @synthesize masterPopoverController = _masterPopoverController;
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem
+- (void)setRack:(id)rack
 {
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
+    if (_rack != rack) {
+        _rack = rack;
         
         // Update the view.
         [self configureView];
@@ -39,8 +41,8 @@
 {
     // Update the user interface for the detail item.
 
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+    if (self.rack) {
+        [_cagesScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:NULL];
     }
 }
 
@@ -53,9 +55,11 @@
 
 - (void)viewDidUnload
 {
+    [self setCagesScrollView:nil];
+    [self setRackColumnHeaderScrollView:nil];
+    [self setRackRowHeaderScrollView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-    self.detailDescriptionLabel = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -63,11 +67,22 @@
     return YES;
 }
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    _rackColumnHeaderScrollView.contentOffset = CGPointMake([object contentOffset].x, 0);
+    _rackRowHeaderScrollView.contentOffset = CGPointMake(0, [object contentOffset].y);
+}
+
 #pragma mark - Split view
+
+- (BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
+{
+    return YES;
+}
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
 {
-    barButtonItem.title = NSLocalizedString(@"Master", @"Master");
+    barButtonItem.title = NSLocalizedString(@"Racks", @"Racks");
     [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
     self.masterPopoverController = popoverController;
 }

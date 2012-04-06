@@ -14,8 +14,8 @@
 		6535A193152EA21400384FF0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A192152EA21400384FF0 /* main.m */; };
 		6535A197152EA21400384FF0 /* MHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A196152EA21400384FF0 /* MHAppDelegate.m */; };
 		6535A19A152EA21400384FF0 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6535A198152EA21400384FF0 /* MainStoryboard.storyboard */; };
-		6535A19D152EA21400384FF0 /* MHMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A19C152EA21400384FF0 /* MHMasterViewController.m */; };
-		6535A1A0152EA21400384FF0 /* MHDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A19F152EA21400384FF0 /* MHDetailViewController.m */; };
+		6535A19D152EA21400384FF0 /* MHRacksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A19C152EA21400384FF0 /* MHRacksViewController.m */; };
+		6535A1A0152EA21400384FF0 /* MHCagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A19F152EA21400384FF0 /* MHCagesViewController.m */; };
 		6535A1A8152EA21400384FF0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6535A1A7152EA21400384FF0 /* SenTestingKit.framework */; };
 		6535A1A9152EA21400384FF0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6535A186152EA21400384FF0 /* UIKit.framework */; };
 		6535A1AA152EA21400384FF0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6535A188152EA21400384FF0 /* Foundation.framework */; };
@@ -45,10 +45,10 @@
 		6535A195152EA21400384FF0 /* MHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.objj.h; path = MHAppDelegate.h; sourceTree = "<group>"; };
 		6535A196152EA21400384FF0 /* MHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHAppDelegate.m; sourceTree = "<group>"; };
 		6535A199152EA21400384FF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		6535A19B152EA21400384FF0 /* MHMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.objj.h; path = MHMasterViewController.h; sourceTree = "<group>"; };
-		6535A19C152EA21400384FF0 /* MHMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHMasterViewController.m; sourceTree = "<group>"; };
-		6535A19E152EA21400384FF0 /* MHDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.objj.h; path = MHDetailViewController.h; sourceTree = "<group>"; };
-		6535A19F152EA21400384FF0 /* MHDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHDetailViewController.m; sourceTree = "<group>"; };
+		6535A19B152EA21400384FF0 /* MHRacksViewController.h */ = {isa = PBXFileReference; path = MHRacksViewController.h; sourceTree = "<group>"; };
+		6535A19C152EA21400384FF0 /* MHRacksViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHRacksViewController.m; sourceTree = "<group>"; };
+		6535A19E152EA21400384FF0 /* MHCagesViewController.h */ = {isa = PBXFileReference; path = MHCagesViewController.h; sourceTree = "<group>"; };
+		6535A19F152EA21400384FF0 /* MHCagesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHCagesViewController.m; sourceTree = "<group>"; };
 		6535A1A6152EA21400384FF0 /* MouseHouse-iOSTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MouseHouse-iOSTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6535A1A7152EA21400384FF0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		6535A1AF152EA21400384FF0 /* MouseHouse-iOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MouseHouse-iOSTests-Info.plist"; sourceTree = "<group>"; };
@@ -117,10 +117,10 @@
 				6535A195152EA21400384FF0 /* MHAppDelegate.h */,
 				6535A196152EA21400384FF0 /* MHAppDelegate.m */,
 				6535A198152EA21400384FF0 /* MainStoryboard.storyboard */,
-				6535A19B152EA21400384FF0 /* MHMasterViewController.h */,
-				6535A19C152EA21400384FF0 /* MHMasterViewController.m */,
-				6535A19E152EA21400384FF0 /* MHDetailViewController.h */,
-				6535A19F152EA21400384FF0 /* MHDetailViewController.m */,
+				6535A19B152EA21400384FF0 /* MHRacksViewController.h */,
+				6535A19C152EA21400384FF0 /* MHRacksViewController.m */,
+				6535A19E152EA21400384FF0 /* MHCagesViewController.h */,
+				6535A19F152EA21400384FF0 /* MHCagesViewController.m */,
 				6535A18D152EA21400384FF0 /* Supporting Files */,
 			);
 			path = "MouseHouse-iOS";
@@ -265,8 +265,8 @@
 			files = (
 				6535A193152EA21400384FF0 /* main.m in Sources */,
 				6535A197152EA21400384FF0 /* MHAppDelegate.m in Sources */,
-				6535A19D152EA21400384FF0 /* MHMasterViewController.m in Sources */,
-				6535A1A0152EA21400384FF0 /* MHDetailViewController.m in Sources */,
+				6535A19D152EA21400384FF0 /* MHRacksViewController.m in Sources */,
+				6535A1A0152EA21400384FF0 /* MHCagesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
