@@ -21,6 +21,12 @@
 		6535A1AA152EA21400384FF0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6535A188152EA21400384FF0 /* Foundation.framework */; };
 		6535A1B2152EA21400384FF0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6535A1B0152EA21400384FF0 /* InfoPlist.strings */; };
 		6535A1B5152EA21400384FF0 /* MouseHouse_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1B4152EA21400384FF0 /* MouseHouse_iOSTests.m */; };
+		6535A1C9152EAC4700384FF0 /* MHAuthenticationChallengeHandler.h in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1C3152EAC4700384FF0 /* MHAuthenticationChallengeHandler.h */; };
+		6535A1CA152EAC4700384FF0 /* MHAuthenticationChallengeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1C4152EAC4700384FF0 /* MHAuthenticationChallengeHandler.m */; };
+		6535A1CB152EAC4700384FF0 /* MHSignInViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1C5152EAC4700384FF0 /* MHSignInViewController.h */; };
+		6535A1CC152EAC4700384FF0 /* MHSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1C6152EAC4700384FF0 /* MHSignInViewController.m */; };
+		6535A1CD152EAC4700384FF0 /* MHSignUpViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1C7152EAC4700384FF0 /* MHSignUpViewController.h */; };
+		6535A1CE152EAC4700384FF0 /* MHSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1C8152EAC4700384FF0 /* MHSignUpViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,9 +51,9 @@
 		6535A195152EA21400384FF0 /* MHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.objj.h; path = MHAppDelegate.h; sourceTree = "<group>"; };
 		6535A196152EA21400384FF0 /* MHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHAppDelegate.m; sourceTree = "<group>"; };
 		6535A199152EA21400384FF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		6535A19B152EA21400384FF0 /* MHRacksViewController.h */ = {isa = PBXFileReference; path = MHRacksViewController.h; sourceTree = "<group>"; };
+		6535A19B152EA21400384FF0 /* MHRacksViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.objj.h; path = MHRacksViewController.h; sourceTree = "<group>"; };
 		6535A19C152EA21400384FF0 /* MHRacksViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHRacksViewController.m; sourceTree = "<group>"; };
-		6535A19E152EA21400384FF0 /* MHCagesViewController.h */ = {isa = PBXFileReference; path = MHCagesViewController.h; sourceTree = "<group>"; };
+		6535A19E152EA21400384FF0 /* MHCagesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.objj.h; path = MHCagesViewController.h; sourceTree = "<group>"; };
 		6535A19F152EA21400384FF0 /* MHCagesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHCagesViewController.m; sourceTree = "<group>"; };
 		6535A1A6152EA21400384FF0 /* MouseHouse-iOSTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MouseHouse-iOSTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6535A1A7152EA21400384FF0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -55,6 +61,12 @@
 		6535A1B1152EA21400384FF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6535A1B3152EA21400384FF0 /* MouseHouse_iOSTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.objj.h; path = MouseHouse_iOSTests.h; sourceTree = "<group>"; };
 		6535A1B4152EA21400384FF0 /* MouseHouse_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MouseHouse_iOSTests.m; sourceTree = "<group>"; };
+		6535A1C3152EAC4700384FF0 /* MHAuthenticationChallengeHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = MHAuthenticationChallengeHandler.h; sourceTree = "<group>"; };
+		6535A1C4152EAC4700384FF0 /* MHAuthenticationChallengeHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHAuthenticationChallengeHandler.m; sourceTree = "<group>"; };
+		6535A1C5152EAC4700384FF0 /* MHSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = MHSignInViewController.h; sourceTree = "<group>"; };
+		6535A1C6152EAC4700384FF0 /* MHSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHSignInViewController.m; sourceTree = "<group>"; };
+		6535A1C7152EAC4700384FF0 /* MHSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = MHSignUpViewController.h; sourceTree = "<group>"; };
+		6535A1C8152EAC4700384FF0 /* MHSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHSignUpViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +126,7 @@
 		6535A18C152EA21400384FF0 /* MouseHouse-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				6535A1CF152EAC4E00384FF0 /* Authentication */,
 				6535A195152EA21400384FF0 /* MHAppDelegate.h */,
 				6535A196152EA21400384FF0 /* MHAppDelegate.m */,
 				6535A198152EA21400384FF0 /* MainStoryboard.storyboard */,
@@ -154,6 +167,19 @@
 				6535A1B0152EA21400384FF0 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6535A1CF152EAC4E00384FF0 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				6535A1C3152EAC4700384FF0 /* MHAuthenticationChallengeHandler.h */,
+				6535A1C4152EAC4700384FF0 /* MHAuthenticationChallengeHandler.m */,
+				6535A1C5152EAC4700384FF0 /* MHSignInViewController.h */,
+				6535A1C6152EAC4700384FF0 /* MHSignInViewController.m */,
+				6535A1C7152EAC4700384FF0 /* MHSignUpViewController.h */,
+				6535A1C8152EAC4700384FF0 /* MHSignUpViewController.m */,
+			);
+			name = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +293,12 @@
 				6535A197152EA21400384FF0 /* MHAppDelegate.m in Sources */,
 				6535A19D152EA21400384FF0 /* MHRacksViewController.m in Sources */,
 				6535A1A0152EA21400384FF0 /* MHCagesViewController.m in Sources */,
+				6535A1C9152EAC4700384FF0 /* MHAuthenticationChallengeHandler.h in Sources */,
+				6535A1CA152EAC4700384FF0 /* MHAuthenticationChallengeHandler.m in Sources */,
+				6535A1CB152EAC4700384FF0 /* MHSignInViewController.h in Sources */,
+				6535A1CC152EAC4700384FF0 /* MHSignInViewController.m in Sources */,
+				6535A1CD152EAC4700384FF0 /* MHSignUpViewController.h in Sources */,
+				6535A1CE152EAC4700384FF0 /* MHSignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
