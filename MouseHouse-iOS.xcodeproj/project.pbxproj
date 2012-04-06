@@ -38,22 +38,22 @@
 		6535A186152EA21400384FF0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6535A188152EA21400384FF0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6535A18A152EA21400384FF0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		6535A18E152EA21400384FF0 /* MouseHouse-iOS-Info.plist */ = {isa = PBXFileReference; path = "MouseHouse-iOS-Info.plist"; sourceTree = "<group>"; };
+		6535A18E152EA21400384FF0 /* MouseHouse-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MouseHouse-iOS-Info.plist"; sourceTree = "<group>"; };
 		6535A190152EA21400384FF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6535A192152EA21400384FF0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6535A194152EA21400384FF0 /* MouseHouse-iOS-Prefix.pch */ = {isa = PBXFileReference; path = "MouseHouse-iOS-Prefix.pch"; sourceTree = "<group>"; };
-		6535A195152EA21400384FF0 /* MHAppDelegate.h */ = {isa = PBXFileReference; path = MHAppDelegate.h; sourceTree = "<group>"; };
+		6535A194152EA21400384FF0 /* MouseHouse-iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MouseHouse-iOS-Prefix.pch"; sourceTree = "<group>"; };
+		6535A195152EA21400384FF0 /* MHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.objj.h; path = MHAppDelegate.h; sourceTree = "<group>"; };
 		6535A196152EA21400384FF0 /* MHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHAppDelegate.m; sourceTree = "<group>"; };
 		6535A199152EA21400384FF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		6535A19B152EA21400384FF0 /* MHMasterViewController.h */ = {isa = PBXFileReference; path = MHMasterViewController.h; sourceTree = "<group>"; };
+		6535A19B152EA21400384FF0 /* MHMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.objj.h; path = MHMasterViewController.h; sourceTree = "<group>"; };
 		6535A19C152EA21400384FF0 /* MHMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHMasterViewController.m; sourceTree = "<group>"; };
-		6535A19E152EA21400384FF0 /* MHDetailViewController.h */ = {isa = PBXFileReference; path = MHDetailViewController.h; sourceTree = "<group>"; };
+		6535A19E152EA21400384FF0 /* MHDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.objj.h; path = MHDetailViewController.h; sourceTree = "<group>"; };
 		6535A19F152EA21400384FF0 /* MHDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHDetailViewController.m; sourceTree = "<group>"; };
 		6535A1A6152EA21400384FF0 /* MouseHouse-iOSTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MouseHouse-iOSTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6535A1A7152EA21400384FF0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		6535A1AF152EA21400384FF0 /* MouseHouse-iOSTests-Info.plist */ = {isa = PBXFileReference; path = "MouseHouse-iOSTests-Info.plist"; sourceTree = "<group>"; };
+		6535A1AF152EA21400384FF0 /* MouseHouse-iOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MouseHouse-iOSTests-Info.plist"; sourceTree = "<group>"; };
 		6535A1B1152EA21400384FF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6535A1B3152EA21400384FF0 /* MouseHouse_iOSTests.h */ = {isa = PBXFileReference; path = MouseHouse_iOSTests.h; sourceTree = "<group>"; };
+		6535A1B3152EA21400384FF0 /* MouseHouse_iOSTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.objj.h; path = MouseHouse_iOSTests.h; sourceTree = "<group>"; };
 		6535A1B4152EA21400384FF0 /* MouseHouse_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MouseHouse_iOSTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
