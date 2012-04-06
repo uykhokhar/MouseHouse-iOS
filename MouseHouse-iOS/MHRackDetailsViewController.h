@@ -1,5 +1,5 @@
 //
-//  MHCageDetailsViewController.h
+//  MHRackDetailsViewController.h
 //  MouseHouse-iOS
 //
 //  Created by Daniel Brajkovic on 4/6/12.
@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MHCageDetailsViewController : UITableViewController
+@interface MHRackDetailsViewController : UITableViewController
 
-@property (weak, nonatomic) IBOutlet UITextField *cageIdentificationTextField;
+@property (weak, nonatomic) IBOutlet UITextField *rackIdentificationTextField;
 @property (weak, nonatomic) IBOutlet UITextField *columnsTextField;
 @property (weak, nonatomic) IBOutlet UITextField *rowsTextField;
 

@@ -1,19 +1,19 @@
 //
-//  MHCageDetailsViewController.m
+//  MHRackDetailsViewController.m
 //  MouseHouse-iOS
 //
 //  Created by Daniel Brajkovic on 4/6/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MHCageDetailsViewController.h"
+#import "MHRackDetailsViewController.h"
 
-@interface MHCageDetailsViewController ()
+@interface MHRackDetailsViewController ()
 
 @end
 
-@implementation MHCageDetailsViewController
-@synthesize cageIdentificationTextField = _cageIdentificationTextField;
+@implementation MHRackDetailsViewController
+@synthesize rackIdentificationTextField = _cageIdentificationTextField;
 @synthesize columnsTextField = _columnsTextField;
 @synthesize rowsTextField = _rowsTextField;
 
@@ -39,7 +39,7 @@
 
 - (void)viewDidUnload
 {
-    [self setCageIdentificationTextField:nil];
+    [self setRackIdentificationTextField:nil];
     [self setColumnsTextField:nil];
     [self setRowsTextField:nil];
     [super viewDidUnload];
