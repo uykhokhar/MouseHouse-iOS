@@ -12,9 +12,8 @@
 
 #define MHBaseResource  @"mouse_racks"
 
-@interface MHRacksViewController () {
-    NSMutableArray *racks;
-}
+@interface MHRacksViewController ()
+    
 @end
 
 @implementation MHRacksViewController
@@ -22,9 +21,12 @@
 @synthesize cagesViewController = _cagesViewController;
 @synthesize tableView = _tableView;
 @synthesize refreshButton = _refreshButton;
+@synthesize racks = _racks;
+@synthesize selectedRack = _selectedRack;
 
 - (void)awakeFromNib
 {
+    self.clearsSelectionOnViewWillAppear = NO;
     self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
     self.resource = MHBaseResource;
     [super awakeFromNib];
@@ -33,9 +35,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self refresh:nil];
-    self.cagesViewController = (MHCagesViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-
+    [self.tableView reloadData];
+    if (_selectedRack) {
+        NSInteger row = [_racks indexOfObject:_selectedRack];
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+    }
 }
 
 - (void)viewDidLoad
@@ -62,10 +66,10 @@
 
 - (void)insertNewObject:(id)sender
 {
-    if (!racks) {
-        racks = [[NSMutableArray alloc] init];
+    if (!_racks) {
+        _racks = [[NSMutableArray alloc] init];
     }
-    [racks insertObject:[NSDate date] atIndex:0];
+    [_racks insertObject:[NSDate date] atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -79,14 +83,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return racks.count;
+    return _racks.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 
-    NSDictionary *rack = [racks objectAtIndex:indexPath.row];
+    NSDictionary *rack = [_racks objectAtIndex:indexPath.row];
     cell.textLabel.text = [rack objectForKey:@"label"];
     return cell;
 }
@@ -100,7 +104,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [racks removeObjectAtIndex:indexPath.row];
+        [_racks removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
@@ -125,8 +129,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDate *object = [racks objectAtIndex:indexPath.row];
-    self.cagesViewController.rack = object;
+    _selectedRack = [_racks objectAtIndex:indexPath.row];
+    self.cagesViewController.rack = _selectedRack;
 }
 
 #pragma mark - NSURLConnection override
@@ -140,8 +144,8 @@
     NSError *error;
     id jsonObject = [NSJSONSerialization JSONObjectWithData:self.receivedData options:NSJSONReadingMutableContainers | NSJSONReadingAllowFragments error:&error];
     NSLog(@"JSON Object: %@", [jsonObject description]);
-    racks = jsonObject;
-    NSLog(@"Racks count: %d", [racks count]);
+    _racks = jsonObject;
+    NSLog(@"Racks count: %d", [_racks count]);
     self.receivedData = nil;
     [self.tableView reloadData];
 }

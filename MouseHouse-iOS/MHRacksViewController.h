@@ -7,14 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MHViewController.h"
+#import "MHTableViewController.h"
 
 @class MHCagesViewController;
 
-@interface MHRacksViewController : MHViewController <UITableViewDataSource, UITableViewDelegate>
+@interface MHRacksViewController : MHTableViewController
 
 @property (strong, nonatomic) MHCagesViewController *cagesViewController;
+@property (strong, nonatomic) NSMutableArray *racks;
+@property (strong, nonatomic) NSMutableDictionary *selectedRack;
 @property (assign, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
+
 
 @end

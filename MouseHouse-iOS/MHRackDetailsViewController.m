@@ -7,9 +7,10 @@
 //
 
 #import "MHRackDetailsViewController.h"
+#import "MHRacksViewController.h"
 
 #define MHResource    @"mouse_racks"
-#define MHIDKey             @"id"
+#define MHIDKey             @"_id"
 #define MHLabelKey          @"label"
 #define MHColumnsKey        @"columns"
 #define MHRowsKey           @"rows"
@@ -24,8 +25,9 @@
 @synthesize rowsTextField = _rowsTextField;
 @synthesize rack = _rack;
 - (IBAction)cancel:(id)sender 
-{
-    
+{   
+    self.rack = nil;
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)configureView
@@ -172,9 +174,12 @@
     id jsonObject = [NSJSONSerialization JSONObjectWithData:self.receivedData options:NSJSONReadingMutableContainers | NSJSONReadingAllowFragments error:&error];
     NSLog(@"JSON Object: %@", [jsonObject description]);
     //if ([jsonObject isKindOfClass:[NSDictionary class]]) {
-        _rack = nil;
+        [_rack setObject:[jsonObject objectForKey:MHIDKey] forKey:MHIDKey];
+    [[(MHRacksViewController *)[self.navigationController.viewControllers objectAtIndex:0] racks] addObject:_rack];
+    [(MHRacksViewController *)[self.navigationController.viewControllers objectAtIndex:0] setSelectedRack:_rack];
         [self.navigationController popViewControllerAnimated:YES];
     //}
+    _rack = nil;
     self.receivedData = nil;
 }
 
