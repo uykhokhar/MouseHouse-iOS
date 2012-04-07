@@ -45,12 +45,12 @@
         NSArray *columnHeaders = [@"A B C D E F G H I J K L M N O P" componentsSeparatedByString:@" "];
         [_cagesScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:NULL];
         int cols, rows;
-        for (cols = 0; cols < 10; cols++) {
+        for (cols = 0; cols < 7; cols++) {
             UILabel *columnHeader = [[UILabel alloc] initWithFrame:CGRectMake(cols*236, 0, 236, _rackColumnHeaderScrollView.bounds.size.height)];
             [columnHeader setTextAlignment:UITextAlignmentCenter];
             [columnHeader setText:[columnHeaders objectAtIndex:cols]];
             [_rackColumnHeaderScrollView addSubview:columnHeader];
-            for (rows = 0; rows < 7; rows++) {
+            for (rows = 0; rows < 10; rows++) {
                 if (cols == 0) {
                     UILabel *rowHeader = [[UILabel alloc] initWithFrame:CGRectMake(0, rows*107, _rackRowHeaderScrollView.bounds.size.width, 107)];
                     [rowHeader setTextAlignment:UITextAlignmentCenter];

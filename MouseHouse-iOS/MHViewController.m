@@ -15,6 +15,11 @@
 @interface MHViewController ()
 
 @property NSURLAuthenticationChallenge *challenge;
+@property (retain, nonatomic) NSURLConnection *refreshConnection;
+@property (retain, nonatomic) NSURLConnection *createConnection;
+@property (retain, nonatomic) NSURLConnection *updateConnection;
+@property (retain, nonatomic) NSURLConnection *destroyConnection;
+@property (retain, nonatomic) NSURLConnection *showConnection;
 
 @end
 
@@ -24,6 +29,11 @@
 @synthesize currentChallenge = _currentChallenge;
 @synthesize receivedData = _receivedData;
 @synthesize resource = _resource;
+@synthesize refreshConnection = _refreshConnection;
+@synthesize createConnection = _createConnection;
+@synthesize updateConnection = _updateConnection;
+@synthesize destroyConnection = _destroyConnection;
+@synthesize showConnection = _showConnection;
 
 - (void)authenticationViewController:(MHSignInViewController *)controller didEnterCredential:(NSURLCredential *)credential
 {
@@ -95,6 +105,11 @@
     // receivedData is declared as a method instance elsewhere
     NSLog(@"Succeeded! Received %d bytes of data",[self.receivedData length]);
     self.receivedData = nil;
+}
+
+- (void)createWithParameters:(NSDictionary *)parameters
+{
+    
 }
 
 // Refresh data

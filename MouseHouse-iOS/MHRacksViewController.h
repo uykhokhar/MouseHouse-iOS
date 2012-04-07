@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MHViewController.h"
 
 @class MHCagesViewController;
 
-@interface MHRacksViewController : UITableViewController
+@interface MHRacksViewController : MHViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) MHCagesViewController *cagesViewController;
+@property (assign, nonatomic) IBOutlet UITableView *tableView;
 
 @end

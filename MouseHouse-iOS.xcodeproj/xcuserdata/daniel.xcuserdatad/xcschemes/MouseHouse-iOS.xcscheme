@@ -15,7 +15,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6535A181152EA21400384FF0"
                BuildableName = "MouseHouse-iOS.app"
-               BlueprintName = "MouseHouse-iOS"
+               BlueprintName = "mousehouse"
                ReferencedContainer = "container:MouseHouse-iOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,7 +43,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6535A181152EA21400384FF0"
             BuildableName = "MouseHouse-iOS.app"
-            BlueprintName = "MouseHouse-iOS"
+            BlueprintName = "mousehouse"
             ReferencedContainer = "container:MouseHouse-iOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -62,7 +62,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6535A181152EA21400384FF0"
             BuildableName = "MouseHouse-iOS.app"
-            BlueprintName = "MouseHouse-iOS"
+            BlueprintName = "mousehouse"
             ReferencedContainer = "container:MouseHouse-iOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -80,7 +80,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6535A181152EA21400384FF0"
             BuildableName = "MouseHouse-iOS.app"
-            BlueprintName = "MouseHouse-iOS"
+            BlueprintName = "mousehouse"
             ReferencedContainer = "container:MouseHouse-iOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

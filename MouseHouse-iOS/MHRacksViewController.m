@@ -10,6 +10,8 @@
 
 #import "MHCagesViewController.h"
 
+#define MHBaseResource  @"mouse_racks"
+
 @interface MHRacksViewController () {
     NSMutableArray *racks;
 }
@@ -18,11 +20,12 @@
 @implementation MHRacksViewController
 
 @synthesize cagesViewController = _cagesViewController;
+@synthesize tableView = _tableView;
 
 - (void)awakeFromNib
 {
-    self.clearsSelectionOnViewWillAppear = NO;
     self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
+    self.resource = MHBaseResource;
     [super awakeFromNib];
 }
 
@@ -32,6 +35,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
+    [self refresh];
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.cagesViewController = (MHCagesViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
@@ -115,6 +119,23 @@
 {
     NSDate *object = [racks objectAtIndex:indexPath.row];
     self.cagesViewController.rack = object;
+}
+
+#pragma mark - NSURLConnection override
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    // do something with the data
+    // receivedData is declared as a method instance elsewhere
+    NSLog(@"Succeeded! Received %d bytes of data",[self.receivedData length]);
+    
+    NSError *error;
+    id jsonObject = [NSJSONSerialization JSONObjectWithData:self.receivedData options:NSJSONReadingMutableContainers | NSJSONReadingAllowFragments error:&error];
+    NSLog(@"JSON Object: %@", [jsonObject description]);
+    if ([jsonObject isKindOfClass:[NSMutableArray class]]) {
+        racks = jsonObject;
+    }
+    self.receivedData = nil;
 }
 
 @end
