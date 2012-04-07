@@ -1,24 +1,34 @@
 //
-//  MHViewController.m
-//  MouseHouse
+//  MHTableViewController.m
+//  MouseHouse-iOS
 //
-//  Created by Daniel Brajkovic on 3/30/12.
+//  Created by Daniel Brajkovic on 4/7/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MHViewController.h"
+#import "MHTableViewController.h"
 #import "MHSignInViewController.h"
 
 #define MHBaseURLString @"http://0.0.0.0:3000/"
 #define MHAPIString @"api/v1/"
 
-@interface MHViewController ()
+
+@interface MHTableViewController ()
 
 @property NSURLAuthenticationChallenge *challenge;
 
 @end
 
-@implementation MHViewController
+@implementation MHTableViewController
+
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
 
 @synthesize challenge = _challenge;
 @synthesize currentChallenge = _currentChallenge;
@@ -28,7 +38,7 @@
 - (void)authenticationViewController:(MHSignInViewController *)controller didEnterCredential:(NSURLCredential *)credential
 {
     NSLog(@"Did recieve credentials");
-     [[self.challenge sender] useCredential:credential forAuthenticationChallenge:self.challenge];
+    [[self.challenge sender] useCredential:credential forAuthenticationChallenge:self.challenge];
 }
 
 #pragma mark NSURLConnectionDelegate implementation
@@ -42,16 +52,16 @@
     
     self.currentChallenge = nil;
     //if ([challenge previousFailureCount] < 5) {
-        self.currentChallenge = [[MHAuthenticationChallengeHandler alloc] initWithChallenge:challenge parentViewController:self];
-        //if (self.currentChallenge == nil) {
-        //    [[challenge sender] continueWithoutCredentialForAuthenticationChallenge:challenge];
-        //} else {
-            //self.currentChallenge.delegate = self;
-            [self.currentChallenge start];
-        //}
-//    } else {
-//        [[challenge sender] cancelAuthenticationChallenge:challenge];
-//    }
+    self.currentChallenge = [[MHAuthenticationChallengeHandler alloc] initWithChallenge:challenge parentViewController:self];
+    //if (self.currentChallenge == nil) {
+    //    [[challenge sender] continueWithoutCredentialForAuthenticationChallenge:challenge];
+    //} else {
+    //self.currentChallenge.delegate = self;
+    [self.currentChallenge start];
+    //}
+    //    } else {
+    //        [[challenge sender] cancelAuthenticationChallenge:challenge];
+    //    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
@@ -128,12 +138,11 @@
     assert(self.resource != nil);
     // Create the request.
     NSMutableDictionary *object = [NSMutableDictionary dictionaryWithDictionary:unsavedObject];
-    NSString *objectID = [object objectForKey:@"id"];
+    NSString *objectID = [object objectForKey:@"_id"];
     
     NSString *urlString;
     NSString *httpMethod;
     if (objectID) {
-        [object removeObjectForKey:@"id"];
         urlString = [NSString stringWithFormat:@"%@%@%@/%@", MHBaseURLString, MHAPIString, self.resource, objectID];
         httpMethod = @"PUT";
     } else {
@@ -143,11 +152,11 @@
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     [theRequest setCachePolicy:NSURLRequestUseProtocolCachePolicy];
     [theRequest setTimeoutInterval:60.0];
-    [theRequest setAllHTTPHeaderFields:[NSDictionary dictionaryWithObjectsAndKeys:@"taco", @"X-MouseHouse-API-Key", @"application/json", @"Accept", nil]];
+    [theRequest setAllHTTPHeaderFields:[NSDictionary dictionaryWithObjectsAndKeys:@"taco", @"X-MouseHouse-API-Key", @"application/json", @"Accept", @"application/json", @"content-type", nil]];
     [theRequest setHTTPMethod:httpMethod];
-    
+    NSLog(@"Post params: %@", [object description]);
     NSError *error;
-    NSData *body = [NSJSONSerialization dataWithJSONObject:object options:NSJSONWritingPrettyPrinted error:&error];
+    NSData *body = [NSJSONSerialization dataWithJSONObject:object options:nil error:&error];
     
     [theRequest setHTTPBody:body];
     // create the connection with the request
@@ -166,5 +175,82 @@
 {
 	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
+
+//#pragma mark - Table view data source
+//
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//
+//    // Return the number of sections.
+//    return 0;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    // Return the number of rows in the section.
+//    return 0;
+//}
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    static NSString *CellIdentifier = @"Cell";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    
+//    // Configure the cell...
+//    
+//    return cell;
+//}
+
+/*
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+*/
+
+/*
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }   
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }   
+}
+*/
+
+/*
+// Override to support rearranging the table view.
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+{
+}
+*/
+
+/*
+// Override to support conditional rearranging of the table view.
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the item to be re-orderable.
+    return YES;
+}
+*/
+
+#pragma mark - Table view delegate
+
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    // Navigation logic may go here. Create and push another view controller.
+//    /*
+//     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+//     // ...
+//     // Pass the selected object to the new view controller.
+//     [self.navigationController pushViewController:detailViewController animated:YES];
+//     */
+//}
 
 @end

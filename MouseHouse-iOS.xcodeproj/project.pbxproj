@@ -27,6 +27,8 @@
 		6535A1D3152EACCE00384FF0 /* MHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1D1152EACCE00384FF0 /* MHViewController.m */; };
 		6535A1D7152EB0E000384FF0 /* MHRackDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1D5152EB0E000384FF0 /* MHRackDetailsViewController.m */; };
 		6535A1D9152EB9C200384FF0 /* mockup_cage_card.png in Resources */ = {isa = PBXBuildFile; fileRef = 6535A1D8152EB9C200384FF0 /* mockup_cage_card.png */; };
+		6535A1DC1530CC4100384FF0 /* MHTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1DA1530CC4000384FF0 /* MHTableViewController.h */; };
+		6535A1DD1530CC4100384FF0 /* MHTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1DB1530CC4100384FF0 /* MHTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		6535A1D4152EB0E000384FF0 /* MHRackDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = MHRackDetailsViewController.h; sourceTree = "<group>"; };
 		6535A1D5152EB0E000384FF0 /* MHRackDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHRackDetailsViewController.m; sourceTree = "<group>"; };
 		6535A1D8152EB9C200384FF0 /* mockup_cage_card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mockup_cage_card.png; sourceTree = "<group>"; };
+		6535A1DA1530CC4000384FF0 /* MHTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = MHTableViewController.h; sourceTree = "<group>"; };
+		6535A1DB1530CC4100384FF0 /* MHTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,8 @@
 				6535A196152EA21400384FF0 /* MHAppDelegate.m */,
 				6535A1D0152EACCE00384FF0 /* MHViewController.h */,
 				6535A1D1152EACCE00384FF0 /* MHViewController.m */,
+				6535A1DA1530CC4000384FF0 /* MHTableViewController.h */,
+				6535A1DB1530CC4100384FF0 /* MHTableViewController.m */,
 				6535A19B152EA21400384FF0 /* MHRacksViewController.h */,
 				6535A19C152EA21400384FF0 /* MHRacksViewController.m */,
 				6535A19E152EA21400384FF0 /* MHCagesViewController.h */,
@@ -309,6 +315,8 @@
 				6535A1CE152EAC4700384FF0 /* MHSignUpViewController.m in Sources */,
 				6535A1D3152EACCE00384FF0 /* MHViewController.m in Sources */,
 				6535A1D7152EB0E000384FF0 /* MHRackDetailsViewController.m in Sources */,
+				6535A1DC1530CC4100384FF0 /* MHTableViewController.h in Sources */,
+				6535A1DD1530CC4100384FF0 /* MHTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,5 +15,6 @@
 
 @property (strong, nonatomic) MHCagesViewController *cagesViewController;
 @property (assign, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 
 @end

@@ -21,6 +21,7 @@
 
 @synthesize cagesViewController = _cagesViewController;
 @synthesize tableView = _tableView;
+@synthesize refreshButton = _refreshButton;
 
 - (void)awakeFromNib
 {
@@ -29,20 +30,27 @@
     [super awakeFromNib];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self refresh:nil];
+    self.cagesViewController = (MHCagesViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-    [self refresh];
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+    self.refreshButton.target = self;
+    self.refreshButton.action = @selector(refresh:);
+    [self refresh:nil];
     self.cagesViewController = (MHCagesViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
 - (void)viewDidUnload
 {
+    [self setRefreshButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -78,8 +86,8 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 
-    NSDate *object = [racks objectAtIndex:indexPath.row];
-    cell.textLabel.text = [object description];
+    NSDictionary *rack = [racks objectAtIndex:indexPath.row];
+    cell.textLabel.text = [rack objectForKey:@"label"];
     return cell;
 }
 
@@ -132,10 +140,10 @@
     NSError *error;
     id jsonObject = [NSJSONSerialization JSONObjectWithData:self.receivedData options:NSJSONReadingMutableContainers | NSJSONReadingAllowFragments error:&error];
     NSLog(@"JSON Object: %@", [jsonObject description]);
-    if ([jsonObject isKindOfClass:[NSMutableArray class]]) {
-        racks = jsonObject;
-    }
+    racks = jsonObject;
+    NSLog(@"Racks count: %d", [racks count]);
     self.receivedData = nil;
+    [self.tableView reloadData];
 }
 
 @end

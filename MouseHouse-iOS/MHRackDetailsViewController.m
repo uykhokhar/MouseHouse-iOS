@@ -8,22 +8,53 @@
 
 #import "MHRackDetailsViewController.h"
 
-@interface MHRackDetailsViewController ()
+#define MHResource    @"mouse_racks"
+#define MHIDKey             @"id"
+#define MHLabelKey          @"label"
+#define MHColumnsKey        @"columns"
+#define MHRowsKey           @"rows"
 
+@interface MHRackDetailsViewController ()
+- (void)configureView;
 @end
 
 @implementation MHRackDetailsViewController
-@synthesize rackIdentificationTextField = _cageIdentificationTextField;
+@synthesize rackLabelTextField = _rackLabelTextField;
 @synthesize columnsTextField = _columnsTextField;
 @synthesize rowsTextField = _rowsTextField;
-
-- (id)initWithStyle:(UITableViewStyle)style
+@synthesize rack = _rack;
+- (IBAction)cancel:(id)sender 
 {
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+    
+}
+
+- (void)configureView
+{
+    self.rackLabelTextField.text = [_rack objectForKey:MHLabelKey];
+    self.columnsTextField.text = [_rack objectForKey:MHColumnsKey];
+    self.rowsTextField.text = [_rack objectForKey:MHRowsKey];
+}
+
+
+- (IBAction)save:(id)sender 
+{
+    if (!_rack)
+        _rack = [NSMutableDictionary dictionary];
+    [_rack setObject:self.rackLabelTextField.text forKey:MHLabelKey];
+    [_rack setObject:self.columnsTextField.text forKey:MHColumnsKey];
+    [_rack setObject:self.rowsTextField.text forKey:MHRowsKey];
+    [self saveObject:_rack];
+}
+
+- (void)setRack:(id)rack
+{
+    if (_rack != rack) {
+        _rack = rack;
+        // Update the view.
+        [self configureView];
+    } else {
+        _rack = [NSMutableDictionary dictionary];
     }
-    return self;
 }
 
 - (void)viewDidLoad
@@ -35,11 +66,12 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.resource = MHResource;
 }
 
 - (void)viewDidUnload
 {
-    [self setRackIdentificationTextField:nil];
+    [self setRackLabelTextField:nil];
     [self setColumnsTextField:nil];
     [self setRowsTextField:nil];
     [super viewDidUnload];
@@ -54,85 +86,96 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//#warning Potentially incomplete method implementation.
+//    // Return the number of sections.
+//    return 0;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//#warning Incomplete method implementation.
+//    // Return the number of rows in the section.
+//    return 0;
+//}
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    static NSString *CellIdentifier = @"Cell";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    
+//    // Configure the cell...
+//    
+//    return cell;
+//}
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }   
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }   
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
+
+/*
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    // Navigation logic may go here. Create and push another view controller.
+//    /*
+//     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+//     // ...
+//     // Pass the selected object to the new view controller.
+//     [self.navigationController pushViewController:detailViewController animated:YES];
+//     */
+//}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    // do something with the data
+    // receivedData is declared as a method instance elsewhere
+    NSLog(@"Succeeded! Received %d bytes of data",[self.receivedData length]);
+    
+    NSError *error;
+    id jsonObject = [NSJSONSerialization JSONObjectWithData:self.receivedData options:NSJSONReadingMutableContainers | NSJSONReadingAllowFragments error:&error];
+    NSLog(@"JSON Object: %@", [jsonObject description]);
+    //if ([jsonObject isKindOfClass:[NSDictionary class]]) {
+        _rack = nil;
+        [self.navigationController popViewControllerAnimated:YES];
+    //}
+    self.receivedData = nil;
 }
 
-- (IBAction)cancel:(id)sender {
-}
-
-- (IBAction)save:(id)sender {
-}
 @end

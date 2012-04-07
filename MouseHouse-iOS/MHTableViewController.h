@@ -1,15 +1,15 @@
 //
-//  MHViewController.h
-//  MouseHouse
+//  MHTableViewController.h
+//  MouseHouse-iOS
 //
-//  Created by Daniel Brajkovic on 3/30/12.
+//  Created by Daniel Brajkovic on 4/7/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "MHAuthenticationChallengeHandler.h"
 
-@interface MHViewController : UIViewController <NSURLConnectionDataDelegate>
+@interface MHTableViewController : UITableViewController <NSURLConnectionDataDelegate>
 
 @property(strong, nonatomic)MHAuthenticationChallengeHandler *currentChallenge;
 @property(strong, nonatomic)NSMutableData *receivedData;
@@ -17,4 +17,5 @@
 
 - (IBAction)refresh:(id)sender;
 - (void)saveObject:(NSMutableDictionary *)unsavedObject;
+
 @end

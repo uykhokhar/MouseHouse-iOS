@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MHTableViewController.h"
 
-@interface MHRackDetailsViewController : UITableViewController
+@interface MHRackDetailsViewController : MHTableViewController
 
-@property (weak, nonatomic) IBOutlet UITextField *rackIdentificationTextField;
+@property (strong, nonatomic) NSMutableDictionary *rack;
+@property (weak, nonatomic) IBOutlet UITextField *rackLabelTextField;
 @property (weak, nonatomic) IBOutlet UITextField *columnsTextField;
 @property (weak, nonatomic) IBOutlet UITextField *rowsTextField;
 
