@@ -16,7 +16,7 @@
 #define MHRowsKey           @"rows"
 
 @interface MHRackDetailsViewController ()
-- (void)configureView;
+
 @end
 
 @implementation MHRackDetailsViewController
@@ -30,13 +30,16 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)configureView
-{
-    self.rackLabelTextField.text = [_rack objectForKey:MHLabelKey];
-    self.columnsTextField.text = [_rack objectForKey:MHColumnsKey];
-    self.rowsTextField.text = [_rack objectForKey:MHRowsKey];
-}
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (_rack) {
+        _rackLabelTextField.text = [_rack objectForKey:MHLabelKey];
+        _columnsTextField.text = [[_rack objectForKey:MHColumnsKey] description];
+        _rowsTextField.text = [[_rack objectForKey:MHRowsKey] description];
+    }
+}
 
 - (IBAction)save:(id)sender 
 {
@@ -46,17 +49,6 @@
     [_rack setObject:self.columnsTextField.text forKey:MHColumnsKey];
     [_rack setObject:self.rowsTextField.text forKey:MHRowsKey];
     [self saveObject:_rack];
-}
-
-- (void)setRack:(id)rack
-{
-    if (_rack != rack) {
-        _rack = rack;
-        // Update the view.
-        [self configureView];
-    } else {
-        _rack = [NSMutableDictionary dictionary];
-    }
 }
 
 - (void)viewDidLoad
@@ -173,12 +165,13 @@
     NSError *error;
     id jsonObject = [NSJSONSerialization JSONObjectWithData:self.receivedData options:NSJSONReadingMutableContainers | NSJSONReadingAllowFragments error:&error];
     NSLog(@"JSON Object: %@", [jsonObject description]);
-    //if ([jsonObject isKindOfClass:[NSDictionary class]]) {
+    if (![_rack objectForKey:MHIDKey]) {
         [_rack setObject:[jsonObject objectForKey:MHIDKey] forKey:MHIDKey];
-    [[(MHRacksViewController *)[self.navigationController.viewControllers objectAtIndex:0] racks] addObject:_rack];
-    [(MHRacksViewController *)[self.navigationController.viewControllers objectAtIndex:0] setSelectedRack:_rack];
-        [self.navigationController popViewControllerAnimated:YES];
+        [[(MHRacksViewController *)[self.navigationController.viewControllers objectAtIndex:0] racks] addObject:_rack];
+        [(MHRacksViewController *)[self.navigationController.viewControllers objectAtIndex:0] setSelectedRack:_rack];
     //}
+    }
+    [self.navigationController popViewControllerAnimated:YES];
     _rack = nil;
     self.receivedData = nil;
 }

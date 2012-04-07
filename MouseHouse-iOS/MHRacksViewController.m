@@ -7,7 +7,7 @@
 //
 
 #import "MHRacksViewController.h"
-
+#import "MHRackDetailsViewController.h"
 #import "MHCagesViewController.h"
 
 #define MHBaseResource  @"mouse_racks"
@@ -32,13 +32,32 @@
     [super awakeFromNib];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"Segue: %@", [segue identifier]);
+    if ([[segue identifier] isEqualToString:@"Edit Segue"]) {
+        MHRackDetailsViewController *vc = [segue destinationViewController];
+        [vc setRack:self.selectedRack];
+    }
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (!_selectedRack && [_racks count] > 0) {
+        _selectedRack = [_racks objectAtIndex:0];
+    }
     if (_selectedRack) {
         NSInteger row = [_racks indexOfObject:_selectedRack];
-        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+        [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
+        [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
     }
 }
 
@@ -129,6 +148,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"Rack selected");
     _selectedRack = [_racks objectAtIndex:indexPath.row];
     self.cagesViewController.rack = _selectedRack;
 }
