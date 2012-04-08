@@ -148,9 +148,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Rack selected");
-    _selectedRack = [_racks objectAtIndex:indexPath.row];
-    self.cagesViewController.rack = _selectedRack;
+    if (indexPath.row < [_racks count]) { 
+        _selectedRack = [_racks objectAtIndex:indexPath.row];
+        self.cagesViewController.rack = _selectedRack;
+    }
 }
 
 #pragma mark - NSURLConnection override

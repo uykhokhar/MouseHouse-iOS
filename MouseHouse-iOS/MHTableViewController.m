@@ -9,6 +9,7 @@
 #import "MHTableViewController.h"
 #import "MHSignInViewController.h"
 
+//#define MHBaseURLString @"http://furious-frost-7266.herokuapp.com/"
 #define MHBaseURLString @"http://0.0.0.0:3000/"
 #define MHAPIString @"api/v1/"
 
@@ -118,7 +119,7 @@
     assert(self.resource != nil);
     // Create the request.
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@", MHBaseURLString, MHAPIString, self.resource]]];
-    [theRequest setCachePolicy:NSURLRequestUseProtocolCachePolicy];
+    [theRequest setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
     [theRequest setTimeoutInterval:60.0];
     [theRequest setAllHTTPHeaderFields:[NSDictionary dictionaryWithObjectsAndKeys:@"taco", @"X-MouseHouse-API-Key", @"application/json", @"Accept", nil]];
     // create the connection with the request
@@ -150,7 +151,7 @@
         httpMethod = @"POST";
     }
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-    [theRequest setCachePolicy:NSURLRequestUseProtocolCachePolicy];
+    [theRequest setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
     [theRequest setTimeoutInterval:60.0];
     [theRequest setAllHTTPHeaderFields:[NSDictionary dictionaryWithObjectsAndKeys:@"taco", @"X-MouseHouse-API-Key", @"application/json", @"Accept", @"application/json", @"content-type", nil]];
     [theRequest setHTTPMethod:httpMethod];

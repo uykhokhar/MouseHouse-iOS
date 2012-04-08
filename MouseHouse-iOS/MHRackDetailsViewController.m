@@ -169,7 +169,7 @@
         [_rack setObject:[jsonObject objectForKey:MHIDKey] forKey:MHIDKey];
         [[(MHRacksViewController *)[self.navigationController.viewControllers objectAtIndex:0] racks] addObject:_rack];
         [(MHRacksViewController *)[self.navigationController.viewControllers objectAtIndex:0] setSelectedRack:_rack];
-    //}
+        [(MHRacksViewController *)[self.navigationController.viewControllers objectAtIndex:0] refresh:nil];
     }
     [self.navigationController popViewControllerAnimated:YES];
     _rack = nil;
