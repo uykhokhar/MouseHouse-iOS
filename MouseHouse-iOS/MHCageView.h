@@ -10,4 +10,15 @@
 
 @interface MHCageView : UIView
 
+@property (strong, nonatomic) NSMutableDictionary *cage;
+@property (weak, nonatomic) id delegate;
+@property (strong, nonatomic) NSString *column;
+@property (strong, nonatomic) NSString *row;
+
+@end
+
+@protocol MHCageViewDelegate <NSObject>
+
+- (void)cageViewTapped:(id)sender;
+
 @end

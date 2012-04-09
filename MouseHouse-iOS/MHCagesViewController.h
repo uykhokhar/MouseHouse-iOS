@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MHViewController.h"
+#import "MHCageView.h"
+#import "MHCageDetailsViewController.h"
 
-@interface MHCagesViewController : UIViewController <UISplitViewControllerDelegate, UIScrollViewDelegate>
+@interface MHCagesViewController : MHViewController <UISplitViewControllerDelegate, UIScrollViewDelegate, MHCageViewDelegate, MHCageDetailsDelegate>
 
 @property (strong, nonatomic) id rack;
 

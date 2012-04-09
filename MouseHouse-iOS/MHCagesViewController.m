@@ -9,8 +9,11 @@
 #import "MHCagesViewController.h"
 #import "MHCageView.h"
 
+#define MHBaseResource  @"cages"
+
 @interface MHCagesViewController () 
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
+@property (strong, nonatomic) UIPopoverController *activateCagePopover;
 - (void)configureView;
 @end
 
@@ -21,6 +24,25 @@
 @synthesize rackRowHeaderScrollView = _rackRowHeaderScrollView;
 @synthesize cagesScrollView = _cagesScrollView;
 @synthesize masterPopoverController = _masterPopoverController;
+@synthesize activateCagePopover = _activateCagePopover;
+
+
+- (void)cageViewTapped:(id)sender
+{
+    MHCageView *cageView = sender;
+    if (!cageView.cage) {
+        MHCageDetailsViewController *cageDetailsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Activate Cage Popover"];
+        cageDetailsVC.delegate = self;
+        cageDetailsVC.cage = [NSMutableDictionary dictionaryWithObjectsAndKeys:cageView.column, @"column", cageView.row, @"row", nil];
+        _activateCagePopover = [[UIPopoverController alloc] initWithContentViewController:cageDetailsVC];
+        
+        _activateCagePopover.popoverContentSize = CGSizeMake(320.0, 200.0);
+        CGRect frame = cageView.frame;
+        frame.origin.x += 40 - _cagesScrollView.contentOffset.x;
+        frame.origin.y += 40 - _cagesScrollView.contentOffset.y;
+        [_activateCagePopover presentPopoverFromRect:frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionLeft | UIPopoverArrowDirectionRight animated:YES];
+    }
+}
 
 #pragma mark - Managing the detail item
 
@@ -72,10 +94,12 @@
                     [rowHeader setText:[NSString stringWithFormat:@"%d", rows +1]];
                     [_rackRowHeaderScrollView addSubview:rowHeader];
                 }
-                UIView *cardView = [[UIView alloc] initWithFrame:CGRectMake(cols*254, rows*125, 254, 125)];
-                cardView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cage-background"]];
-                
-                [_cagesScrollView addSubview:cardView];
+                MHCageView *cageView = [[MHCageView alloc] initWithFrame:CGRectMake(cols*254, rows*125, 254, 125)];
+                [cageView setDelegate:self];
+                [_cagesScrollView addSubview:cageView];
+                [cageView setColumn:[columnHeaders objectAtIndex:cols]];
+                [cageView setRow:[NSString stringWithFormat:@"%d", rows +1]];
+                [cageView setCage:nil];
             }
         }
         float width = cols * 254;
@@ -91,6 +115,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
+    self.resource = MHBaseResource;
     //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"black-Linen"]]];
 }
 
@@ -106,6 +131,20 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
+}
+
+#pragma mark - Cage Details Delegate
+
+- (void)cageDetailsSaveButtonClickedForCage:(NSMutableDictionary *)cage
+{
+    [cage setObject:[_rack objectForKey:@"_id"] forKey:@"mouse_rack_id"];
+    [self saveObject:cage];
+    [_activateCagePopover dismissPopoverAnimated:YES];
+}
+
+- (void)cageDetailsCancelButtonClickedForCage:(NSMutableDictionary *)cage
+{
+    [_activateCagePopover dismissPopoverAnimated:YES];
 }
 
 #pragma mark - Scroll Views

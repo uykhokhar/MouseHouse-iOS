@@ -74,6 +74,79 @@
             </objects>
             <point key="canvasLocation" x="448" y="248"/>
         </scene>
+        <!--Cage Details View Controller-->
+        <scene sceneID="pJ0-od-cu4">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fFp-Lm-CFV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController storyboardIdentifier="Activate Cage Popover" id="9FF-Pn-sHt" customClass="MHCageDetailsViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="3ev-2Q-aP4">
+                        <rect key="frame" x="0.0" y="20" width="320" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="nkI-fV-bRV">
+                            <rect key="frame" x="0.0" y="90" width="320" height="111"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="zQU-dQ-mHv">
+                                    <rect key="frame" x="0.0" y="67" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                    <items>
+                                        <barButtonItem systemItem="cancel" id="Zs0-Qr-AmW">
+                                            <connections>
+                                                <action selector="cancel:" destination="9FF-Pn-sHt" id="BfD-sr-q11"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem style="plain" systemItem="flexibleSpace" id="gCz-dP-sKi"/>
+                                        <barButtonItem systemItem="save" id="d8N-1t-4Cq">
+                                            <connections>
+                                                <action selector="save:" destination="9FF-Pn-sHt" id="reB-ay-jbt"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </items>
+                                </toolbar>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </view>
+                        <sections>
+                            <tableViewSection headerTitle="Cage Number" id="SWy-Vs-oKR">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Bbn-jd-Njx">
+                                        <rect key="frame" x="0.0" y="34" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cage number" minimumFontSize="17" id="Ogl-5O-z9g">
+                                                    <rect key="frame" x="20" y="6" width="240" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="9FF-Pn-sHt" id="WYK-y6-GnW"/>
+                            <outlet property="delegate" destination="9FF-Pn-sHt" id="j8N-bt-MOA"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="400"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="cageNumber" destination="Ogl-5O-z9g" id="hOB-hd-FTm"/>
+                    </connections>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1285" y="248"/>
+        </scene>
         <!--Split View Controller-->
         <scene sceneID="18">
             <objects>
@@ -499,6 +572,13 @@
         </scene>
     </scenes>
     <classes>
+        <class className="MHCageDetailsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MHCageDetailsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="save:"/>
+            </relationships>
+        </class>
         <class className="MHCagesViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MHCagesViewController.h"/>
             <relationships>

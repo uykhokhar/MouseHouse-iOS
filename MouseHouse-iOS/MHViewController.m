@@ -106,10 +106,11 @@
 // Refresh data
 - (void)refresh:(id)sender
 {
+    NSLog(@"Refreshing");
     assert(self.resource != nil);
     // Create the request.
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@", MHBaseURLString, MHAPIString, self.resource]]];
-    [theRequest setCachePolicy:NSURLRequestUseProtocolCachePolicy];
+    [theRequest setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
     [theRequest setTimeoutInterval:60.0];
     [theRequest setAllHTTPHeaderFields:[NSDictionary dictionaryWithObjectsAndKeys:@"taco", @"X-MouseHouse-API-Key", @"application/json", @"Accept", nil]];
     // create the connection with the request
@@ -124,17 +125,15 @@
     }
 }
 
-- (void)saveObject:(NSMutableDictionary *)unsavedObject
+- (void)saveObject:(NSMutableDictionary *)object
 {
     assert(self.resource != nil);
     // Create the request.
-    NSMutableDictionary *object = [NSMutableDictionary dictionaryWithDictionary:unsavedObject];
-    NSString *objectID = [object objectForKey:@"id"];
+    NSString *objectID = [object objectForKey:@"_id"];
     
     NSString *urlString;
     NSString *httpMethod;
     if (objectID) {
-        [object removeObjectForKey:@"id"];
         urlString = [NSString stringWithFormat:@"%@%@%@/%@", MHBaseURLString, MHAPIString, self.resource, objectID];
         httpMethod = @"PUT";
     } else {
@@ -142,18 +141,46 @@
         httpMethod = @"POST";
     }
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-    [theRequest setCachePolicy:NSURLRequestUseProtocolCachePolicy];
+    [theRequest setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
     [theRequest setTimeoutInterval:60.0];
-    [theRequest setAllHTTPHeaderFields:[NSDictionary dictionaryWithObjectsAndKeys:@"taco", @"X-MouseHouse-API-Key", @"application/json", @"Accept", nil]];
+    [theRequest setAllHTTPHeaderFields:[NSDictionary dictionaryWithObjectsAndKeys:@"taco", @"X-MouseHouse-API-Key", @"application/json", @"Accept", @"application/json", @"content-type", nil]];
     [theRequest setHTTPMethod:httpMethod];
-    
+    NSLog(@"Post params: %@", [object description]);
     NSError *error;
-    NSData *body = [NSJSONSerialization dataWithJSONObject:object options:NSJSONWritingPrettyPrinted error:&error];
+    NSData *body = [NSJSONSerialization dataWithJSONObject:object options:0 error:&error];
     
     [theRequest setHTTPBody:body];
     // create the connection with the request
     // and start loading the data
     NSURLConnection *theConnection= [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+    if (theConnection) {
+        // Create the NSMutableData to hold the received data.
+        // receivedData is an instance variable declared elsewhere.
+        _receivedData = [NSMutableData data];
+    } else {
+        // Inform the user that the connection failed.
+    }
+}
+
+- (void)destroyObject:(NSMutableDictionary *)object
+{
+    assert(self.resource != nil);
+    // Create the request.
+    NSString *objectID = [object objectForKey:@"_id"];
+    assert(objectID != nil);
+    NSString *urlString;
+    NSString *httpMethod;
+    urlString = [NSString stringWithFormat:@"%@%@%@/%@", MHBaseURLString, MHAPIString, self.resource, objectID];
+    httpMethod = @"DELETE";
+    
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    [theRequest setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
+    [theRequest setTimeoutInterval:60.0];
+    [theRequest setAllHTTPHeaderFields:[NSDictionary dictionaryWithObjectsAndKeys:@"taco", @"X-MouseHouse-API-Key", @"application/json", @"Accept", @"application/json", @"content-type", nil]];
+    [theRequest setHTTPMethod:httpMethod];
+    // create the connection with the request
+    // and start loading the data
+    NSURLConnection *theConnection= [[NSURLConnection alloc] initWithRequest:theRequest delegate:nil];
     if (theConnection) {
         // Create the NSMutableData to hold the received data.
         // receivedData is an instance variable declared elsewhere.

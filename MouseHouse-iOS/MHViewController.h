@@ -16,5 +16,7 @@
 @property(strong, nonatomic)NSString *resource;
 
 - (IBAction)refresh:(id)sender;
-- (void)saveObject:(NSMutableDictionary *)unsavedObject;
+- (void)saveObject:(NSMutableDictionary *)object;
+- (void)destroyObject:(NSMutableDictionary *)object;
+
 @end
