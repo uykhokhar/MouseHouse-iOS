@@ -9,7 +9,7 @@
 #import "MHCagesViewController.h"
 #import "MHCageView.h"
 
-@interface MHCagesViewController ()
+@interface MHCagesViewController () 
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 - (void)configureView;
 @end
@@ -55,7 +55,6 @@
     
     if (self.rack) {
         NSArray *columnHeaders = [@"A B C D E F G H I J K L M N O P" componentsSeparatedByString:@" "];
-        [_cagesScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:NULL];
         NSInteger cols, rows;
         for (cols = 0; cols < [[self.rack valueForKey:@"columns"] integerValue]; cols++) {
             UILabel *columnHeader = [[UILabel alloc] initWithFrame:CGRectMake(cols*254, 0, 254, _rackColumnHeaderScrollView.bounds.size.height)];
@@ -77,7 +76,6 @@
                 cardView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cage-background"]];
                 
                 [_cagesScrollView addSubview:cardView];
-                NSLog(@"card: %@ \n", [cardView description]);
             }
         }
         float width = cols * 254;
@@ -85,9 +83,6 @@
         [_rackColumnHeaderScrollView setContentSize:CGSizeMake(width, _rackColumnHeaderScrollView.frame.size.height)];
         [_rackRowHeaderScrollView setContentSize:CGSizeMake(_rackRowHeaderScrollView.frame.size.width, height)];
         [_cagesScrollView setContentSize:CGSizeMake(_rackColumnHeaderScrollView.contentSize.width, _rackRowHeaderScrollView.contentSize.height)];
-        
-        NSLog(@"Col: %f, Row: %f, main: %f", _rackColumnHeaderScrollView.contentSize.height, _rackRowHeaderScrollView.contentSize.height, _cagesScrollView.contentSize.height);
-
     }
 }
 
@@ -113,10 +108,46 @@
     return YES;
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+#pragma mark - Scroll Views
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    _rackColumnHeaderScrollView.contentOffset = CGPointMake([object contentOffset].x, 0);
-    _rackRowHeaderScrollView.contentOffset = CGPointMake(0, [object contentOffset].y);
+    if (scrollView == _cagesScrollView) {
+        _rackColumnHeaderScrollView.delegate = nil;
+        _rackRowHeaderScrollView.delegate = nil;
+    } else if (scrollView == _rackColumnHeaderScrollView) {
+        _cagesScrollView.delegate = nil;
+        _rackRowHeaderScrollView.delegate = nil;
+    } else if (scrollView == _rackRowHeaderScrollView) {
+        _cagesScrollView.delegate = nil;
+        _rackColumnHeaderScrollView.delegate = nil;
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView == _cagesScrollView) {
+        _rackColumnHeaderScrollView.contentOffset = CGPointMake([scrollView contentOffset].x, 0);
+        _rackRowHeaderScrollView.contentOffset = CGPointMake(0, [scrollView contentOffset].y);
+    } else if (scrollView == _rackColumnHeaderScrollView) {
+        _cagesScrollView.contentOffset = CGPointMake([scrollView contentOffset].x, 0);
+    } else if (scrollView == _rackRowHeaderScrollView) {
+        _cagesScrollView.contentOffset = CGPointMake(0, [scrollView contentOffset].y);
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate) {
+        [self scrollViewDidEndDecelerating:scrollView];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    _cagesScrollView.delegate = self;
+    _rackColumnHeaderScrollView.delegate = self;
+    _rackRowHeaderScrollView.delegate = self;
 }
 
 #pragma mark - Split view

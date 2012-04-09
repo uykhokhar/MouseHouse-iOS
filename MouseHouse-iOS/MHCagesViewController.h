@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MHCagesViewController : UIViewController <UISplitViewControllerDelegate>
+@interface MHCagesViewController : UIViewController <UISplitViewControllerDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) id rack;
 
