@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MHTableViewController.h"
 
-@interface MHRackDetailsViewController : MHTableViewController
+@interface MHRackDetailsViewController : MHTableViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) NSMutableDictionary *rack;
 @property (weak, nonatomic) IBOutlet UITextField *rackLabelTextField;

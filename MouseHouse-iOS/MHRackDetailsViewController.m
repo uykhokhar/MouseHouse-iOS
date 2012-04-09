@@ -31,6 +31,7 @@
 }
 
 
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -43,6 +44,18 @@
 
 - (IBAction)save:(id)sender 
 {
+    NSString *label = self.rackLabelTextField.text;
+    NSString *columns = self.columnsTextField.text;
+    NSString *rows = self.rowsTextField.text;
+    if ([label isEqualToString:@""] || [columns isEqualToString:@""] || [rows isEqualToString:@""]) {
+        UIAlertView *blankFields = [[UIAlertView alloc] initWithTitle:@"Blank Fields Not Allowed" 
+                                                              message:@"All fields must be complete." 
+                                                             delegate:nil 
+                                                    cancelButtonTitle:@"Dismiss" 
+                                                    otherButtonTitles:nil];
+        [blankFields show];
+        return;
+    }
     if (!_rack)
         _rack = [NSMutableDictionary dictionary];
     [_rack setObject:self.rackLabelTextField.text forKey:MHLabelKey];
@@ -76,6 +89,14 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSMutableCharacterSet *cs = [NSMutableCharacterSet decimalDigitCharacterSet];
+    NSString *filtered = [[string componentsSeparatedByCharactersInSet:[cs invertedSet]] componentsJoinedByString:@""];
+    BOOL replacementAllowed = [string isEqualToString:filtered];
+    return  replacementAllowed;
 }
 
 #pragma mark - Table view data source
