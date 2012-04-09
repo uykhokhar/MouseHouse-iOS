@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) MHCagesViewController *cagesViewController;
 @property (strong, nonatomic) NSMutableArray *racks;
-@property (strong, nonatomic) NSMutableDictionary *selectedRack;
+@property (strong, nonatomic) NSString *selectedRackId;
 @property (assign, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 

@@ -27,8 +27,13 @@
 		6535A1D3152EACCE00384FF0 /* MHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1D1152EACCE00384FF0 /* MHViewController.m */; };
 		6535A1D7152EB0E000384FF0 /* MHRackDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1D5152EB0E000384FF0 /* MHRackDetailsViewController.m */; };
 		6535A1D9152EB9C200384FF0 /* mockup_cage_card.png in Resources */ = {isa = PBXBuildFile; fileRef = 6535A1D8152EB9C200384FF0 /* mockup_cage_card.png */; };
-		6535A1DC1530CC4100384FF0 /* MHTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1DA1530CC4000384FF0 /* MHTableViewController.h */; };
 		6535A1DD1530CC4100384FF0 /* MHTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1DB1530CC4100384FF0 /* MHTableViewController.m */; };
+		6535A1E5153128A300384FF0 /* paper.png in Resources */ = {isa = PBXBuildFile; fileRef = 6535A1E4153128A200384FF0 /* paper.png */; };
+		6535A1E91531490E00384FF0 /* MHCageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1E71531490D00384FF0 /* MHCageView.m */; };
+		6535A1EB15314F7700384FF0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6535A1EA15314F7700384FF0 /* QuartzCore.framework */; };
+		6535A1ED153154AD00384FF0 /* black-Linen.png in Resources */ = {isa = PBXBuildFile; fileRef = 6535A1EC153154AD00384FF0 /* black-Linen.png */; };
+		6535A1F4153233FA00384FF0 /* cage-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6535A1F2153233FA00384FF0 /* cage-background.png */; };
+		6535A1F5153233FA00384FF0 /* cage-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6535A1F3153233FA00384FF0 /* cage-background@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +81,13 @@
 		6535A1D8152EB9C200384FF0 /* mockup_cage_card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mockup_cage_card.png; sourceTree = "<group>"; };
 		6535A1DA1530CC4000384FF0 /* MHTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = MHTableViewController.h; sourceTree = "<group>"; };
 		6535A1DB1530CC4100384FF0 /* MHTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHTableViewController.m; sourceTree = "<group>"; };
+		6535A1E4153128A200384FF0 /* paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paper.png; sourceTree = "<group>"; };
+		6535A1E61531490C00384FF0 /* MHCageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = MHCageView.h; sourceTree = "<group>"; };
+		6535A1E71531490D00384FF0 /* MHCageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHCageView.m; sourceTree = "<group>"; };
+		6535A1EA15314F7700384FF0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		6535A1EC153154AD00384FF0 /* black-Linen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black-Linen.png"; sourceTree = "<group>"; };
+		6535A1F2153233FA00384FF0 /* cage-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cage-background.png"; sourceTree = "<group>"; };
+		6535A1F3153233FA00384FF0 /* cage-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cage-background@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6535A1EB15314F7700384FF0 /* QuartzCore.framework in Frameworks */,
 				6535A187152EA21400384FF0 /* UIKit.framework in Frameworks */,
 				6535A189152EA21400384FF0 /* Foundation.framework in Frameworks */,
 				6535A18B152EA21400384FF0 /* CoreGraphics.framework in Frameworks */,
@@ -105,6 +118,7 @@
 		6535A177152EA21400384FF0 = {
 			isa = PBXGroup;
 			children = (
+				6535A1EA15314F7700384FF0 /* QuartzCore.framework */,
 				6535A18C152EA21400384FF0 /* MouseHouse-iOS */,
 				6535A1AD152EA21400384FF0 /* MouseHouse-iOSTests */,
 				6535A185152EA21400384FF0 /* Frameworks */,
@@ -144,12 +158,18 @@
 				6535A1DB1530CC4100384FF0 /* MHTableViewController.m */,
 				6535A19B152EA21400384FF0 /* MHRacksViewController.h */,
 				6535A19C152EA21400384FF0 /* MHRacksViewController.m */,
-				6535A19E152EA21400384FF0 /* MHCagesViewController.h */,
-				6535A19F152EA21400384FF0 /* MHCagesViewController.m */,
 				6535A1D4152EB0E000384FF0 /* MHRackDetailsViewController.h */,
 				6535A1D5152EB0E000384FF0 /* MHRackDetailsViewController.m */,
+				6535A19E152EA21400384FF0 /* MHCagesViewController.h */,
+				6535A19F152EA21400384FF0 /* MHCagesViewController.m */,
+				6535A1E61531490C00384FF0 /* MHCageView.h */,
+				6535A1E71531490D00384FF0 /* MHCageView.m */,
 				6535A198152EA21400384FF0 /* MainStoryboard.storyboard */,
+				6535A1F2153233FA00384FF0 /* cage-background.png */,
+				6535A1F3153233FA00384FF0 /* cage-background@2x.png */,
 				6535A1D8152EB9C200384FF0 /* mockup_cage_card.png */,
+				6535A1E4153128A200384FF0 /* paper.png */,
+				6535A1EC153154AD00384FF0 /* black-Linen.png */,
 				6535A18D152EA21400384FF0 /* Supporting Files */,
 			);
 			path = "MouseHouse-iOS";
@@ -272,6 +292,10 @@
 				6535A191152EA21400384FF0 /* InfoPlist.strings in Resources */,
 				6535A19A152EA21400384FF0 /* MainStoryboard.storyboard in Resources */,
 				6535A1D9152EB9C200384FF0 /* mockup_cage_card.png in Resources */,
+				6535A1E5153128A300384FF0 /* paper.png in Resources */,
+				6535A1ED153154AD00384FF0 /* black-Linen.png in Resources */,
+				6535A1F4153233FA00384FF0 /* cage-background.png in Resources */,
+				6535A1F5153233FA00384FF0 /* cage-background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,8 +339,8 @@
 				6535A1CE152EAC4700384FF0 /* MHSignUpViewController.m in Sources */,
 				6535A1D3152EACCE00384FF0 /* MHViewController.m in Sources */,
 				6535A1D7152EB0E000384FF0 /* MHRackDetailsViewController.m in Sources */,
-				6535A1DC1530CC4100384FF0 /* MHTableViewController.h in Sources */,
 				6535A1DD1530CC4100384FF0 /* MHTableViewController.m in Sources */,
+				6535A1E91531490E00384FF0 /* MHCageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

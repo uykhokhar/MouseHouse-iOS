@@ -13,7 +13,9 @@
 #define MHBaseResource  @"mouse_racks"
 
 @interface MHRacksViewController ()
-    
+
+- (NSMutableDictionary *)rackWithId:(NSString *)idString;
+
 @end
 
 @implementation MHRacksViewController
@@ -22,7 +24,7 @@
 @synthesize tableView = _tableView;
 @synthesize refreshButton = _refreshButton;
 @synthesize racks = _racks;
-@synthesize selectedRack = _selectedRack;
+@synthesize selectedRackId = _selectedRackId;
 
 - (void)awakeFromNib
 {
@@ -37,28 +39,21 @@
     NSLog(@"Segue: %@", [segue identifier]);
     if ([[segue identifier] isEqualToString:@"Edit Segue"]) {
         MHRackDetailsViewController *vc = [segue destinationViewController];
-        [vc setRack:self.selectedRack];
+        vc.rack = [self rackWithId:[self selectedRackId]];
     }
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.tableView reloadData];
-}
 
-- (void)viewDidAppear:(BOOL)animated
+- (NSMutableDictionary *)rackWithId:(NSString *)idString
 {
-    [super viewDidAppear:animated];
-    if (!_selectedRack && [_racks count] > 0) {
-        _selectedRack = [_racks objectAtIndex:0];
+    NSMutableDictionary *selectedRack = nil;
+    NSPredicate *selectionPredicate = [NSPredicate predicateWithFormat:@"_id == %@", _selectedRackId];
+    NSArray *filteredArray = [_racks filteredArrayUsingPredicate:selectionPredicate];
+    NSLog(@"Selected Rack %d", [filteredArray count]);
+    if ([filteredArray count] > 0) {
+         selectedRack = [filteredArray objectAtIndex:0];
     }
-    if (_selectedRack) {
-        NSInteger row = [_racks indexOfObject:_selectedRack];
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
-        [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
-        [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
-    }
+    return selectedRack;
 }
 
 - (void)viewDidLoad
@@ -149,8 +144,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row < [_racks count]) { 
-        _selectedRack = [_racks objectAtIndex:indexPath.row];
-        self.cagesViewController.rack = _selectedRack;
+        NSMutableDictionary *selectedRack = [_racks objectAtIndex:indexPath.row];
+        self.cagesViewController.rack = selectedRack;
+        self.selectedRackId = [selectedRack objectForKey:@"_id"];
+        NSLog(@"Selected Rack %@", _selectedRackId.description);
     }
 }
 
@@ -169,6 +166,17 @@
     NSLog(@"Racks count: %d", [_racks count]);
     self.receivedData = nil;
     [self.tableView reloadData];
+    [self viewDidAppear:YES];
+    NSLog(@"Selected Rack %@", _selectedRackId.description);
+    if ((!_selectedRackId || [_selectedRackId isEqualToString:@""])  && [_racks count] > 0) {
+        NSLog(@"INITIAL ID: %@", [[_racks objectAtIndex:0] description]);
+        _selectedRackId = [[_racks objectAtIndex:0] valueForKey:@"_id"];
+    }
+    NSInteger row = [_racks indexOfObject:[self rackWithId:_selectedRackId]];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
+    self.cagesViewController.rack = [self rackWithId:_selectedRackId];
+
 }
 
 @end

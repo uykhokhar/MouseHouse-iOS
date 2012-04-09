@@ -36,16 +36,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="gSn-pn-cEo">
-                                <rect key="frame" x="40" y="40" width="683" height="684"/>
+                                <rect key="frame" x="40" y="40" width="663" height="664"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </scrollView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="zwP-ap-VuG">
                                 <rect key="frame" x="40" y="0.0" width="663" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </scrollView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="nH9-GN-l3H">
                                 <rect key="frame" x="0.0" y="40" width="40" height="664"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -489,7 +492,7 @@
                 <relationship kind="outlet" name="rackRowHeaderScrollView" candidateClass="UIScrollView"/>
             </relationships>
         </class>
-        <class className="MHRackDetailsViewController" superclassName="MHViewController">
+        <class className="MHRackDetailsViewController" superclassName="MHTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MHRackDetailsViewController.h"/>
             <relationships>
                 <relationship kind="action" name="cancel:"/>
@@ -499,7 +502,7 @@
                 <relationship kind="outlet" name="rowsTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
-        <class className="MHRacksViewController" superclassName="MHViewController">
+        <class className="MHRacksViewController" superclassName="MHTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MHRacksViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="refreshButton" candidateClass="UIBarButtonItem"/>
@@ -519,8 +522,8 @@
                 <relationship kind="action" name="signUpAction:"/>
             </relationships>
         </class>
-        <class className="MHViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MHViewController.h"/>
+        <class className="MHTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MHTableViewController.h"/>
             <relationships>
                 <relationship kind="action" name="refresh:"/>
             </relationships>
@@ -528,7 +531,7 @@
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
-        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedOrientationMetrics key="orientation" orientation="landscapeRight"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>

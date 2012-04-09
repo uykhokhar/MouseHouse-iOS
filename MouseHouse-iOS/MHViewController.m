@@ -9,8 +9,8 @@
 #import "MHViewController.h"
 #import "MHSignInViewController.h"
 
-//#define MHBaseURLString @"http://furious-frost-7266.herokuapp.com/"
-#define MHBaseURLString @"http://0.0.0.0:3000/"
+#define MHBaseURLString @"http://furious-frost-7266.herokuapp.com/"
+//#define MHBaseURLString @"http://0.0.0.0:3000/"
 #define MHAPIString @"api/v1/"
 
 @interface MHViewController ()

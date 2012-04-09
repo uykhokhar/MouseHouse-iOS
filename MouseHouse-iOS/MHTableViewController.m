@@ -9,8 +9,8 @@
 #import "MHTableViewController.h"
 #import "MHSignInViewController.h"
 
-//#define MHBaseURLString @"http://furious-frost-7266.herokuapp.com/"
-#define MHBaseURLString @"http://0.0.0.0:3000/"
+#define MHBaseURLString @"http://furious-frost-7266.herokuapp.com/"
+//#define MHBaseURLString @"http://0.0.0.0:3000/"
 #define MHAPIString @"api/v1/"
 
 
@@ -116,6 +116,7 @@
 // Refresh data
 - (void)refresh:(id)sender
 {
+    NSLog(@"Refreshing");
     assert(self.resource != nil);
     // Create the request.
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@", MHBaseURLString, MHAPIString, self.resource]]];

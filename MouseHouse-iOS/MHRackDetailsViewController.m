@@ -166,11 +166,9 @@
     id jsonObject = [NSJSONSerialization JSONObjectWithData:self.receivedData options:NSJSONReadingMutableContainers | NSJSONReadingAllowFragments error:&error];
     NSLog(@"JSON Object: %@", [jsonObject description]);
     if (![_rack objectForKey:MHIDKey]) {
-        [_rack setObject:[jsonObject objectForKey:MHIDKey] forKey:MHIDKey];
-        [[(MHRacksViewController *)[self.navigationController.viewControllers objectAtIndex:0] racks] addObject:_rack];
-        [(MHRacksViewController *)[self.navigationController.viewControllers objectAtIndex:0] setSelectedRack:_rack];
-        [(MHRacksViewController *)[self.navigationController.viewControllers objectAtIndex:0] refresh:nil];
+        [(MHRacksViewController *)[self.navigationController.viewControllers objectAtIndex:0] setSelectedRackId:[jsonObject objectForKey:MHIDKey]];
     }
+    [(MHRacksViewController *)[self.navigationController.viewControllers objectAtIndex:0] refresh:nil];
     [self.navigationController popViewControllerAnimated:YES];
     _rack = nil;
     self.receivedData = nil;
