@@ -35,6 +35,10 @@
 		6535A1F4153233FA00384FF0 /* cage-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6535A1F2153233FA00384FF0 /* cage-background.png */; };
 		6535A1F5153233FA00384FF0 /* cage-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6535A1F3153233FA00384FF0 /* cage-background@2x.png */; };
 		6535A1F91532966300384FF0 /* MHCageDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1F71532966200384FF0 /* MHCageDetailsViewController.m */; };
+		6554819C1537BFDD00E0ADBC /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 655481981537BFDD00E0ADBC /* libTestFlight.a */; };
+		6554819D1537BFDD00E0ADBC /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 655481991537BFDD00E0ADBC /* README.txt */; };
+		6554819E1537BFDD00E0ADBC /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6554819A1537BFDD00E0ADBC /* release_notes.txt */; };
+		655481A11537BFE900E0ADBC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 655481A01537BFE900E0ADBC /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +95,11 @@
 		6535A1F3153233FA00384FF0 /* cage-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cage-background@2x.png"; sourceTree = "<group>"; };
 		6535A1F61532966200384FF0 /* MHCageDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = MHCageDetailsViewController.h; sourceTree = "<group>"; };
 		6535A1F71532966200384FF0 /* MHCageDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHCageDetailsViewController.m; sourceTree = "<group>"; };
+		655481981537BFDD00E0ADBC /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		655481991537BFDD00E0ADBC /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		6554819A1537BFDD00E0ADBC /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.txt; sourceTree = "<group>"; };
+		6554819B1537BFDD00E0ADBC /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = TestFlight.h; sourceTree = "<group>"; };
+		655481A01537BFE900E0ADBC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,10 +107,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				655481A11537BFE900E0ADBC /* libz.dylib in Frameworks */,
 				6535A1EB15314F7700384FF0 /* QuartzCore.framework in Frameworks */,
 				6535A187152EA21400384FF0 /* UIKit.framework in Frameworks */,
 				6535A189152EA21400384FF0 /* Foundation.framework in Frameworks */,
 				6535A18B152EA21400384FF0 /* CoreGraphics.framework in Frameworks */,
+				6554819C1537BFDD00E0ADBC /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,10 +132,11 @@
 		6535A177152EA21400384FF0 = {
 			isa = PBXGroup;
 			children = (
-				6535A1EA15314F7700384FF0 /* QuartzCore.framework */,
 				6535A18C152EA21400384FF0 /* MouseHouse-iOS */,
 				6535A1AD152EA21400384FF0 /* MouseHouse-iOSTests */,
+				655481971537BFDD00E0ADBC /* TestFlightSDK */,
 				6535A185152EA21400384FF0 /* Frameworks */,
+				655481A21537BFF700E0ADBC /* Libraries */,
 				6535A183152EA21400384FF0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -141,6 +153,7 @@
 		6535A185152EA21400384FF0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6535A1EA15314F7700384FF0 /* QuartzCore.framework */,
 				6535A186152EA21400384FF0 /* UIKit.framework */,
 				6535A188152EA21400384FF0 /* Foundation.framework */,
 				6535A18A152EA21400384FF0 /* CoreGraphics.framework */,
@@ -223,6 +236,25 @@
 			name = Authentication;
 			sourceTree = "<group>";
 		};
+		655481971537BFDD00E0ADBC /* TestFlightSDK */ = {
+			isa = PBXGroup;
+			children = (
+				655481981537BFDD00E0ADBC /* libTestFlight.a */,
+				655481991537BFDD00E0ADBC /* README.txt */,
+				6554819A1537BFDD00E0ADBC /* release_notes.txt */,
+				6554819B1537BFDD00E0ADBC /* TestFlight.h */,
+			);
+			path = TestFlightSDK;
+			sourceTree = "<group>";
+		};
+		655481A21537BFF700E0ADBC /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				655481A01537BFE900E0ADBC /* libz.dylib */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -301,6 +333,8 @@
 				6535A1ED153154AD00384FF0 /* black-Linen.png in Resources */,
 				6535A1F4153233FA00384FF0 /* cage-background.png in Resources */,
 				6535A1F5153233FA00384FF0 /* cage-background@2x.png in Resources */,
+				6554819D1537BFDD00E0ADBC /* README.txt in Resources */,
+				6554819E1537BFDD00E0ADBC /* release_notes.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +484,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MouseHouse-iOS/MouseHouse-iOS-Prefix.pch";
 				INFOPLIST_FILE = "MouseHouse-iOS/MouseHouse-iOS-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/TestFlightSDK\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -461,6 +499,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MouseHouse-iOS/MouseHouse-iOS-Prefix.pch";
 				INFOPLIST_FILE = "MouseHouse-iOS/MouseHouse-iOS-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/TestFlightSDK\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -519,6 +561,7 @@
 				6535A1BA152EA21400384FF0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6535A1BB152EA21400384FF0 /* Build configuration list for PBXNativeTarget "MouseHouse-iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +570,7 @@
 				6535A1BD152EA21400384FF0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

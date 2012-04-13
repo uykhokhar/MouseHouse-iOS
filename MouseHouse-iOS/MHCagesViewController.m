@@ -77,7 +77,8 @@
     
     if (self.rack) {
         NSArray *columnHeaders = [@"A B C D E F G H I J K L M N O P" componentsSeparatedByString:@" "];
-        NSInteger cols, rows;
+        NSInteger cols = 0;
+        NSInteger rows = 0;
         for (cols = 0; cols < [[self.rack valueForKey:@"columns"] integerValue]; cols++) {
             UILabel *columnHeader = [[UILabel alloc] initWithFrame:CGRectMake(cols*254, 0, 254, _rackColumnHeaderScrollView.bounds.size.height)];
             [columnHeader setBackgroundColor:[UIColor whiteColor]];
@@ -208,6 +209,21 @@
     // Called when the view is shown again in the split view, invalidating the button and popover controller.
     [self.navigationItem setLeftBarButtonItem:nil animated:YES];
     self.masterPopoverController = nil;
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    // do something with the data
+    // receivedData is declared as a method instance elsewhere
+    NSLog(@"Succeeded! Received %d bytes of data",[self.receivedData length]);
+    
+    NSError *error;
+    id jsonObject = [NSJSONSerialization JSONObjectWithData:self.receivedData options:NSJSONReadingMutableContainers | NSJSONReadingAllowFragments error:&error];
+    
+    if ([jsonObject isKindOfClass:[NSMutableDictionary class]]) {
+        NSLog(@"JSON Object: %@", [jsonObject description]);
+    }
+    self.receivedData = nil;
 }
 
 @end
