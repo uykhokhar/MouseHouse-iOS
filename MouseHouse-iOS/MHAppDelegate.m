@@ -8,7 +8,7 @@
 
 #import "MHAppDelegate.h"
 
-#import "MHRacksViewController.h"
+#import "RacksTableViewController.h"
 
 @implementation MHAppDelegate
 
@@ -27,7 +27,7 @@
     splitViewController.delegate = (id)navigationController.topViewController;
     
     UINavigationController *masterNavigationController = [splitViewController.viewControllers objectAtIndex:0];
-    MHRacksViewController *controller = (MHRacksViewController *)masterNavigationController.topViewController;
+    RacksTableViewController *controller = (RacksTableViewController *)masterNavigationController.topViewController;
     controller.managedObjectContext = self.managedObjectContext;
     
     return YES;

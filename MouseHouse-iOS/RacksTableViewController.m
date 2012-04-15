@@ -6,19 +6,17 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MHRacksViewController.h"
+#import "RacksTableViewController.h"
 #import "RackEditViewController.h"
-#import "MHCagesViewController.h"
+#import "RackViewController.h"
 
-#define MHBaseResource  @"mouse_racks"
-
-@interface MHRacksViewController ()
+@interface RacksTableViewController ()
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
-@implementation MHRacksViewController
+@implementation RacksTableViewController
 
 @synthesize cagesViewController = _cagesViewController;
 @synthesize tableView = _tableView;
@@ -32,14 +30,13 @@
 {
     self.clearsSelectionOnViewWillAppear = NO;
     self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
-    self.resource = MHBaseResource;
     [super awakeFromNib];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.cagesViewController = (MHCagesViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    self.cagesViewController = (RackViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
 - (void)viewDidUnload
@@ -66,9 +63,12 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    RackEditViewController *vc = [segue destinationViewController];
+    [vc setRackManagedObjectID:[self.cagesViewController.rack objectID]];
     if ([@"Edit Segue" isEqualToString:[segue identifier]]) {
-        RackEditViewController *vc = [segue destinationViewController];
-        [vc setRackManagedObjectID:[self.cagesViewController.rack objectID]];
+        vc.navigationItem.title = @"Edit Rack";
+    } else if ([@"Add Segue" isEqualToString:[segue identifier]]){
+        vc.navigationItem.title = @"Add Rack";
     }
 }
 

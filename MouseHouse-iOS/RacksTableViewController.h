@@ -9,14 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "MHTableViewController.h"
 
-@class MHCagesViewController;
+@class RackViewController;
 
-@interface MHRacksViewController : MHTableViewController  <NSFetchedResultsControllerDelegate>
+@interface RacksTableViewController : UITableViewController  <NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) MHCagesViewController *cagesViewController;
+@property (strong, nonatomic) RackViewController *cagesViewController;
 @property (strong, nonatomic) NSMutableArray *racks;
 @property (strong, nonatomic) NSString *selectedRackId;
-@property (assign, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;

@@ -6,18 +6,18 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MHCagesViewController.h"
+#import "RackViewController.h"
 #import "MHCageView.h"
 
 #define MHBaseResource  @"cages"
 
-@interface MHCagesViewController () 
+@interface RackViewController () 
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 @property (strong, nonatomic) UIPopoverController *activateCagePopover;
 - (void)configureView;
 @end
 
-@implementation MHCagesViewController
+@implementation RackViewController
 
 @synthesize rack = _rack;
 @synthesize rackColumnHeaderScrollView = _rackColumnHeaderScrollView;
