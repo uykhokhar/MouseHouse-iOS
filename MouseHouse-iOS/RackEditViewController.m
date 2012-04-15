@@ -7,33 +7,29 @@
 //
 
 #import "RackEditViewController.h"
-#import "MHRacksViewController.h"
-
-#define MHIDKey             @"_id"
-#define MHLabelKey          @"label"
-#define MHColumnsKey        @"columns"
-#define MHRowsKey           @"rows"
 
 @interface RackEditViewController ()
 
-@property (strong, nonatomic) NSManagedObjectContext *editingObjectContext;
+
+@property (strong, nonatomic) NSManagedObjectContext *editingContext;
 
 @end
 
 @implementation RackEditViewController
 @synthesize rackLabelTextField = _rackLabelTextField;
+@synthesize locationTextField = _locationTextField;
 @synthesize columnsTextField = _columnsTextField;
 @synthesize rowsTextField = _rowsTextField;
 @synthesize rack = _rack;
-@synthesize editingObjectContext = _editingObjectContext;
+@synthesize editingContext = _editingContext;
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
     id appDelegate = [[UIApplication sharedApplication] delegate];
     NSPersistentStoreCoordinator *coordinator = [appDelegate persistentStoreCoordinator];
-    _editingObjectContext = [[NSManagedObjectContext alloc] init];
-    [_editingObjectContext setPersistentStoreCoordinator:coordinator];
+    _editingContext = [[NSManagedObjectContext alloc] init];
+    [_editingContext setPersistentStoreCoordinator:coordinator];
 }
 
 - (void)viewDidLoad
@@ -49,9 +45,7 @@
 
 - (void)viewDidUnload
 {
-    [self setRackLabelTextField:nil];
-    [self setColumnsTextField:nil];
-    [self setRowsTextField:nil];
+    [self setLocationTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -60,12 +54,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     if (!_rack) {
-        NSEntityDescription *rackEntity = [NSEntityDescription entityForName:@"Rack" inManagedObjectContext:_editingObjectContext];
-        _rack = [[Rack alloc] initWithEntity:rackEntity insertIntoManagedObjectContext:_editingObjectContext];
+        NSEntityDescription *rackEntity = [NSEntityDescription entityForName:@"Rack" inManagedObjectContext:_editingContext];
+        _rack = [[Rack alloc] initWithEntity:rackEntity insertIntoManagedObjectContext:_editingContext];
     }
-    _rackLabelTextField.text = [_rack valueForKey:MHLabelKey];
-    _columnsTextField.text = [[_rack valueForKey:MHColumnsKey] description];
-    _rowsTextField.text = [[_rack valueForKey:MHRowsKey] description];
+    _rackLabelTextField.text = _rack.label;
+    _locationTextField.text = _rack.location;
+    _columnsTextField.text = [NSString stringWithFormat:@"%d", _rack.columns];
+    _rowsTextField.text = [NSString stringWithFormat:@"%d", _rack.rows];
    [super viewWillAppear:animated];
 }
 
@@ -98,19 +93,20 @@
     if (!_rack)
         _rack = [NSMutableDictionary dictionary];
     [_rack setLabel:self.rackLabelTextField.text];
+    [_rack setLocation:self.locationTextField.text];
     [_rack setColumns:[self.columnsTextField.text intValue]];
     [_rack setRows:[self.rowsTextField.text intValue]];
-    [self.editingObjectContext save:nil]; 
-    
+    [self.editingContext save:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)setRackManagedObjectID:(NSManagedObjectID *)rackManagedObjectID
+- (void)setRack:(Rack *)rack
 {
-    if (rackManagedObjectID) {
-        _rack = (Rack *)[_editingObjectContext objectWithID:rackManagedObjectID];
+    if (rack) {
+        _rack = (Rack *)[_editingContext objectWithID:[rack objectID]];
     } else {
-        NSEntityDescription *rackEntity = [NSEntityDescription entityForName:@"Rack" inManagedObjectContext:_editingObjectContext];
-        _rack = [[Rack alloc] initWithEntity:rackEntity insertIntoManagedObjectContext:_editingObjectContext];
+        NSEntityDescription *rackEntity = [NSEntityDescription entityForName:@"Rack" inManagedObjectContext:_editingContext];
+        _rack = [[Rack alloc] initWithEntity:rackEntity insertIntoManagedObjectContext:_editingContext];
     }
     
 }

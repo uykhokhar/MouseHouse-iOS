@@ -18,11 +18,10 @@
 
 @implementation RacksTableViewController
 
-@synthesize cagesViewController = _cagesViewController;
+@synthesize rackViewController = _rackViewController;
 @synthesize tableView = _tableView;
 @synthesize refreshButton = _refreshButton;
 @synthesize racks = _racks;
-@synthesize selectedRackId = _selectedRackId;
 @synthesize fetchedResultsController = __fetchedResultsController;
 @synthesize managedObjectContext = __managedObjectContext;
 
@@ -36,7 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.cagesViewController = (RackViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    self.rackViewController = (RackViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
 - (void)viewDidUnload
@@ -44,6 +43,12 @@
     [self setRefreshButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.fetchedResultsController performFetch:nil];
+    [super viewWillAppear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -64,7 +69,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     RackEditViewController *vc = [segue destinationViewController];
-    [vc setRackManagedObjectID:[self.cagesViewController.rack objectID]];
+    [vc setRack:self.rackViewController.rack];
     if ([@"Edit Segue" isEqualToString:[segue identifier]]) {
         vc.navigationItem.title = @"Edit Rack";
     } else if ([@"Add Segue" isEqualToString:[segue identifier]]){
@@ -88,8 +93,9 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 
-    NSDictionary *rack = [[[self fetchedResultsController] fetchedObjects] objectAtIndex:indexPath.row];
-    cell.textLabel.text = [rack valueForKey:@"label"];
+    Rack *rack = [[[self fetchedResultsController] fetchedObjects] objectAtIndex:indexPath.row];
+    cell.textLabel.text = rack.label;
+    cell.detailTextLabel.text = rack.location;
     return cell;
 }
 
@@ -101,15 +107,18 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        [self destroyObject:[[[self fetchedResultsController] fetchedObjects] objectAtIndex:indexPath.row]];
-//        [_racks removeObjectAtIndex:indexPath.row];
-//        self.selectedRackId = nil;
-//        self.cagesViewController.rack = nil;
-//        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-//        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-//    }
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+        [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+        
+        NSError *error = nil;
+        if (![context save:&error]) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
 }
 
 /*
@@ -130,8 +139,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSManagedObject *rack = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-    self.cagesViewController.rack = rack;
+    Rack *rack = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    self.rackViewController.rack = rack;
 }
 
 #pragma mark - Fetched results controller

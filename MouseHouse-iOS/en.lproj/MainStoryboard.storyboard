@@ -147,6 +147,33 @@
             </objects>
             <point key="canvasLocation" x="1285" y="248"/>
         </scene>
+        <!--Cage View Controller-->
+        <scene sceneID="i5T-d9-0fi">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Brf-al-3o3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="Cage View Controller" id="Ui8-Lz-Ye5" customClass="CageViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oVe-sz-amb">
+                        <rect key="frame" x="0.0" y="20" width="254" height="125"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tap to Activate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="jyq-Lk-lm0">
+                                <rect key="frame" x="70" y="52" width="115" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.52156862745098043" green="0.52156862745098043" blue="0.52156862745098043" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="0.0" height="1"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1285" y="559"/>
+        </scene>
         <!--Split View Controller-->
         <scene sceneID="18">
             <objects>
@@ -168,7 +195,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="23" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="Racks View Controller" title="Racks" clearsSelectionOnViewWillAppear="NO" id="19" customClass="RacksTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="20">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="20">
                         <rect key="frame" x="0.0" y="64" width="320" height="660"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -181,7 +208,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tIi-5l-S0i">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tIi-5l-S0i">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -201,7 +228,6 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem systemItem="refresh" id="YmC-8M-BRG"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="kFB-xY-6gg"/>
                         <barButtonItem systemItem="add" id="cEY-By-lYZ">
                             <connections>
@@ -218,7 +244,6 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="refreshButton" destination="YmC-8M-BRG" id="eU3-FA-38D"/>
                         <outlet property="tableView" destination="20" id="1qK-Lp-dIg"/>
                         <outlet property="view" destination="20" id="hLF-ao-z0i"/>
                     </connections>
@@ -246,7 +271,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Rack Number" minimumFontSize="17" id="3OV-FM-76f">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Rack Number" minimumFontSize="14" id="3OV-FM-76f">
                                                     <rect key="frame" x="20" y="6" width="260" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -267,14 +292,11 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Building, room number, etc." minimumFontSize="17" id="8QY-dk-UT0">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Building, room number, etc." minimumFontSize="14" id="8QY-dk-UT0">
                                                     <rect key="frame" x="20" y="6" width="260" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="KFR-qc-7B5" id="fJQ-jL-n6P"/>
-                                                    </connections>
+                                                    <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -360,6 +382,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="columnsTextField" destination="ZRr-0H-i7P" id="MoX-Qv-96s"/>
+                        <outlet property="locationTextField" destination="8QY-dk-UT0" id="5Gl-i1-Zab"/>
                         <outlet property="rackLabelTextField" destination="3OV-FM-76f" id="zM3-CH-eXO"/>
                         <outlet property="rowsTextField" destination="llr-m7-r0O" id="6jN-Ss-615"/>
                     </connections>
@@ -596,6 +619,9 @@
         </scene>
     </scenes>
     <classes>
+        <class className="CageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CageViewController.h"/>
+        </class>
         <class className="MHCageDetailsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MHCageDetailsViewController.h"/>
             <relationships>
@@ -623,8 +649,23 @@
                 <relationship kind="action" name="cancel:"/>
                 <relationship kind="action" name="save:"/>
                 <relationship kind="outlet" name="columnsTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="locationTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="rackLabelTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="rowsTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="RackViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RackViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cagesScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="rackColumnHeaderScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="rackRowHeaderScrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="RacksTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RacksTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="refreshButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
     </classes>

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D2001" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Cage" syncable="YES">
         <attribute name="activatedOn" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="cageNumber" optional="YES" attributeType="Integer 16" defaultValueString="6" syncable="YES"/>
         <attribute name="deactivatedOn" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="floodedOn" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="maxCapacity" optional="YES" attributeType="Integer 16" defaultValueString="6" syncable="YES"/>
+        <relationship name="rack" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Rack" inverseName="cages" inverseEntity="Rack" syncable="YES"/>
     </entity>
     <entity name="HealthCard" syncable="YES">
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
@@ -36,13 +37,14 @@
         <attribute name="label" optional="YES" attributeType="String" defaultValueString="New Rack" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rows" optional="YES" attributeType="Integer 16" minValueString="1" defaultValueString="10" syncable="YES"/>
+        <relationship name="cages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cage" inverseName="rack" inverseEntity="Cage" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Cage" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="Cage" positionX="160" positionY="192" width="128" height="135"/>
         <element name="HealthCard" positionX="160" positionY="192" width="128" height="90"/>
         <element name="Litter" positionX="160" positionY="192" width="128" height="120"/>
         <element name="Mouse" positionX="160" positionY="192" width="128" height="165"/>
         <element name="Note" positionX="160" positionY="192" width="128" height="45"/>
-        <element name="Rack" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="Rack" positionX="160" positionY="192" width="128" height="135"/>
     </elements>
 </model>

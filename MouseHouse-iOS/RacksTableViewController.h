@@ -13,9 +13,8 @@
 
 @interface RacksTableViewController : UITableViewController  <NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) RackViewController *cagesViewController;
+@property (strong, nonatomic) RackViewController *rackViewController;
 @property (strong, nonatomic) NSMutableArray *racks;
-@property (strong, nonatomic) NSString *selectedRackId;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;

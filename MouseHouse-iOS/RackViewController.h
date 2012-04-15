@@ -10,10 +10,12 @@
 #import "MHViewController.h"
 #import "MHCageView.h"
 #import "MHCageDetailsViewController.h"
+#import "Rack.h"
 
 @interface RackViewController : UIViewController <UISplitViewControllerDelegate, UIScrollViewDelegate, MHCageViewDelegate, MHCageDetailsDelegate>
 
-@property (strong, nonatomic) id rack;
+@property (strong, nonatomic) Rack *rack;
+@property (strong, nonatomic) NSMutableArray *cageViewControllers;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *rackColumnHeaderScrollView;
 @property (weak, nonatomic) IBOutlet UIScrollView *rackRowHeaderScrollView;

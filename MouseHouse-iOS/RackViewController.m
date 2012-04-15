@@ -7,7 +7,7 @@
 //
 
 #import "RackViewController.h"
-#import "MHCageView.h"
+#import "CageViewController.h"
 
 #define MHBaseResource  @"cages"
 
@@ -25,7 +25,7 @@
 @synthesize cagesScrollView = _cagesScrollView;
 @synthesize masterPopoverController = _masterPopoverController;
 @synthesize activateCagePopover = _activateCagePopover;
-
+@synthesize cageViewControllers = _cageViewControllers;
 
 - (void)cageViewTapped:(id)sender
 {
@@ -46,16 +46,11 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setRack:(id)rack
+- (void)setRack:(Rack *)rack
 {
-    if (_rack != rack || [_rack valueForKey:@"columns"] != [rack valueForKey:@"columns"] || [_rack valueForKey:@"rows"] != [rack valueForKey:@"rows"]) {
-        _rack = rack;
-        
-        // Update the view.
-
-//    if (self.masterPopoverController != nil) {
-//        [self.masterPopoverController dismissPopoverAnimated:YES];
-    }        
+    assert(rack != nil);
+    _rack = rack;
+    [self configureView];
 }
 
 - (void)configureView
@@ -75,35 +70,40 @@
     }
     
     if (self.rack) {
+        self.cageViewControllers = [NSMutableArray array];
+        CageViewController *cageViewController;
         NSArray *columnHeaders = [@"A B C D E F G H I J K L M N O P" componentsSeparatedByString:@" "];
-        NSInteger cols = 0;
-        NSInteger rows = 0;
-        for (cols = 0; cols < [[self.rack valueForKey:@"columns"] integerValue]; cols++) {
-            UILabel *columnHeader = [[UILabel alloc] initWithFrame:CGRectMake(cols*254, 0, 254, _rackColumnHeaderScrollView.bounds.size.height)];
+        NSInteger column = 0;
+        NSInteger row = 0;
+        for (column = 0; column < self.rack.columns; column++) {
+            UILabel *columnHeader = [[UILabel alloc] initWithFrame:CGRectMake(column*254, 0, 254, _rackColumnHeaderScrollView.bounds.size.height)];
+            UILabel *rowHeader;
             [columnHeader setBackgroundColor:[UIColor whiteColor]];
             [columnHeader setTextAlignment:UITextAlignmentCenter];
             [columnHeader setTextColor:[UIColor blackColor]];
-            [columnHeader setText:[columnHeaders objectAtIndex:cols]];
+            [columnHeader setText:[columnHeaders objectAtIndex:column]];
             [_rackColumnHeaderScrollView addSubview:columnHeader];
-            for (rows = 0; rows < [[self.rack valueForKey:@"rows"] integerValue]; rows++) {
-                if (cols == 0) {
-                    UILabel *rowHeader = [[UILabel alloc] initWithFrame:CGRectMake(0, rows*125, _rackRowHeaderScrollView.bounds.size.width, 125)];
+            for (row = 0; row < self.rack.rows; row++) {
+                if (column == 0) {
+                    rowHeader = [[UILabel alloc] initWithFrame:CGRectMake(0, row*125, _rackRowHeaderScrollView.bounds.size.width, 125)];
                     [rowHeader setBackgroundColor:[UIColor whiteColor]];
                     [rowHeader setTextAlignment:UITextAlignmentCenter];
                     [rowHeader setTextColor:[UIColor blackColor]];
-                    [rowHeader setText:[NSString stringWithFormat:@"%d", rows +1]];
+                    [rowHeader setText:[NSString stringWithFormat:@"%d", row +1]];
                     [_rackRowHeaderScrollView addSubview:rowHeader];
                 }
-                MHCageView *cageView = [[MHCageView alloc] initWithFrame:CGRectMake(cols*254, rows*125, 254, 125)];
-                [cageView setDelegate:self];
+                cageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Cage View Controller"];
+                UIView *cageView = cageViewController.view;
+                [cageView  setFrame:CGRectMake(column*254, row*125, 254, 125)];
                 [_cagesScrollView addSubview:cageView];
-                [cageView setColumn:[columnHeaders objectAtIndex:cols]];
-                [cageView setRow:[NSString stringWithFormat:@"%d", rows +1]];
-                [cageView setCage:nil];
+                [cageViewController setColumn:columnHeader.text];
+                [cageViewController setRow:rowHeader.text];
+                [self.cageViewControllers addObject:cageViewController];
+                cageViewController = nil;
             }
         }
-        float width = cols * 254;
-        float height = rows * 125;
+        float width = column * 254;
+        float height = row * 125;
         [_rackColumnHeaderScrollView setContentSize:CGSizeMake(width, _rackColumnHeaderScrollView.frame.size.height)];
         [_rackRowHeaderScrollView setContentSize:CGSizeMake(_rackRowHeaderScrollView.frame.size.width, height)];
         [_cagesScrollView setContentSize:CGSizeMake(_rackColumnHeaderScrollView.contentSize.width, _rackRowHeaderScrollView.contentSize.height)];
@@ -135,7 +135,6 @@
 
 - (void)cageDetailsSaveButtonClickedForCage:(NSMutableDictionary *)cage
 {
-    [cage setObject:[_rack objectForKey:@"_id"] forKey:@"mouse_rack_id"];
     [_activateCagePopover dismissPopoverAnimated:YES];
 }
 

@@ -10,6 +10,12 @@
 
 #import "RacksTableViewController.h"
 
+@interface MHAppDelegate ()
+
+- (void)contextSaved:(NSNotification *)notification;
+
+@end
+
 @implementation MHAppDelegate
 
 @synthesize window = _window;
@@ -29,6 +35,8 @@
     UINavigationController *masterNavigationController = [splitViewController.viewControllers objectAtIndex:0];
     RacksTableViewController *controller = (RacksTableViewController *)masterNavigationController.topViewController;
     controller.managedObjectContext = self.managedObjectContext;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contextSaved:) name:NSManagedObjectContextDidSaveNotification object:nil];
     
     return YES;
 }
@@ -58,6 +66,13 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)contextSaved:(NSNotification *)notification
+{
+    if ([notification object] != self.managedObjectContext) {
+        [self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+    }
 }
 
 - (void)saveContext
