@@ -11,7 +11,7 @@
 #import "MHCageView.h"
 #import "MHCageDetailsViewController.h"
 
-@interface MHCagesViewController : MHViewController <UISplitViewControllerDelegate, UIScrollViewDelegate, MHCageViewDelegate, MHCageDetailsDelegate>
+@interface MHCagesViewController : UIViewController <UISplitViewControllerDelegate, UIScrollViewDelegate, MHCageViewDelegate, MHCageDetailsDelegate>
 
 @property (strong, nonatomic) id rack;
 

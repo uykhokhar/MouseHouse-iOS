@@ -25,7 +25,7 @@
 		6535A1CC152EAC4700384FF0 /* MHSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1C6152EAC4700384FF0 /* MHSignInViewController.m */; };
 		6535A1CE152EAC4700384FF0 /* MHSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1C8152EAC4700384FF0 /* MHSignUpViewController.m */; };
 		6535A1D3152EACCE00384FF0 /* MHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1D1152EACCE00384FF0 /* MHViewController.m */; };
-		6535A1D7152EB0E000384FF0 /* MHRackDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1D5152EB0E000384FF0 /* MHRackDetailsViewController.m */; };
+		6535A1D7152EB0E000384FF0 /* RackEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1D5152EB0E000384FF0 /* RackEditViewController.m */; };
 		6535A1D9152EB9C200384FF0 /* mockup_cage_card.png in Resources */ = {isa = PBXBuildFile; fileRef = 6535A1D8152EB9C200384FF0 /* mockup_cage_card.png */; };
 		6535A1DD1530CC4100384FF0 /* MHTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6535A1DB1530CC4100384FF0 /* MHTableViewController.m */; };
 		6535A1E5153128A300384FF0 /* paper.png in Resources */ = {isa = PBXBuildFile; fileRef = 6535A1E4153128A200384FF0 /* paper.png */; };
@@ -39,6 +39,8 @@
 		6554819D1537BFDD00E0ADBC /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 655481991537BFDD00E0ADBC /* README.txt */; };
 		6554819E1537BFDD00E0ADBC /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6554819A1537BFDD00E0ADBC /* release_notes.txt */; };
 		655481A11537BFE900E0ADBC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 655481A01537BFE900E0ADBC /* libz.dylib */; };
+		6563091F153A4E6400F451D5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65630919153A4E1700F451D5 /* CoreData.framework */; };
+		80F57E17153AB65800D91E7D /* MouseHouse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80F57E15153AB65800D91E7D /* MouseHouse.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,8 +83,8 @@
 		6535A1C8152EAC4700384FF0 /* MHSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHSignUpViewController.m; sourceTree = "<group>"; };
 		6535A1D0152EACCE00384FF0 /* MHViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = MHViewController.h; sourceTree = "<group>"; };
 		6535A1D1152EACCE00384FF0 /* MHViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHViewController.m; sourceTree = "<group>"; };
-		6535A1D4152EB0E000384FF0 /* MHRackDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = MHRackDetailsViewController.h; sourceTree = "<group>"; };
-		6535A1D5152EB0E000384FF0 /* MHRackDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHRackDetailsViewController.m; sourceTree = "<group>"; };
+		6535A1D4152EB0E000384FF0 /* RackEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RackEditViewController.h; sourceTree = "<group>"; };
+		6535A1D5152EB0E000384FF0 /* RackEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RackEditViewController.m; sourceTree = "<group>"; };
 		6535A1D8152EB9C200384FF0 /* mockup_cage_card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mockup_cage_card.png; sourceTree = "<group>"; };
 		6535A1DA1530CC4000384FF0 /* MHTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = MHTableViewController.h; sourceTree = "<group>"; };
 		6535A1DB1530CC4100384FF0 /* MHTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHTableViewController.m; sourceTree = "<group>"; };
@@ -100,6 +102,8 @@
 		6554819A1537BFDD00E0ADBC /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.txt; sourceTree = "<group>"; };
 		6554819B1537BFDD00E0ADBC /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = TestFlight.h; sourceTree = "<group>"; };
 		655481A01537BFE900E0ADBC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		65630919153A4E1700F451D5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		80F57E16153AB65800D91E7D /* MouseHouse.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MouseHouse.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 				6535A1EB15314F7700384FF0 /* QuartzCore.framework in Frameworks */,
 				6535A187152EA21400384FF0 /* UIKit.framework in Frameworks */,
 				6535A189152EA21400384FF0 /* Foundation.framework in Frameworks */,
+				6563091F153A4E6400F451D5 /* CoreData.framework in Frameworks */,
 				6535A18B152EA21400384FF0 /* CoreGraphics.framework in Frameworks */,
 				6554819C1537BFDD00E0ADBC /* libTestFlight.a in Frameworks */,
 			);
@@ -156,6 +161,7 @@
 				6535A1EA15314F7700384FF0 /* QuartzCore.framework */,
 				6535A186152EA21400384FF0 /* UIKit.framework */,
 				6535A188152EA21400384FF0 /* Foundation.framework */,
+				65630919153A4E1700F451D5 /* CoreData.framework */,
 				6535A18A152EA21400384FF0 /* CoreGraphics.framework */,
 				6535A1A7152EA21400384FF0 /* SenTestingKit.framework */,
 			);
@@ -167,6 +173,7 @@
 			children = (
 				65E1401B15392E4900375623 /* Classes */,
 				6535A198152EA21400384FF0 /* MainStoryboard.storyboard */,
+				80F57E15153AB65800D91E7D /* MouseHouse.xcdatamodeld */,
 				6535A1F2153233FA00384FF0 /* cage-background.png */,
 				6535A1F3153233FA00384FF0 /* cage-background@2x.png */,
 				6535A1D8152EB9C200384FF0 /* mockup_cage_card.png */,
@@ -251,8 +258,8 @@
 				6535A1DB1530CC4100384FF0 /* MHTableViewController.m */,
 				6535A19B152EA21400384FF0 /* MHRacksViewController.h */,
 				6535A19C152EA21400384FF0 /* MHRacksViewController.m */,
-				6535A1D4152EB0E000384FF0 /* MHRackDetailsViewController.h */,
-				6535A1D5152EB0E000384FF0 /* MHRackDetailsViewController.m */,
+				6535A1D4152EB0E000384FF0 /* RackEditViewController.h */,
+				6535A1D5152EB0E000384FF0 /* RackEditViewController.m */,
 				6535A19E152EA21400384FF0 /* MHCagesViewController.h */,
 				6535A19F152EA21400384FF0 /* MHCagesViewController.m */,
 				6535A1E61531490C00384FF0 /* MHCageView.h */,
@@ -385,10 +392,11 @@
 				6535A1CC152EAC4700384FF0 /* MHSignInViewController.m in Sources */,
 				6535A1CE152EAC4700384FF0 /* MHSignUpViewController.m in Sources */,
 				6535A1D3152EACCE00384FF0 /* MHViewController.m in Sources */,
-				6535A1D7152EB0E000384FF0 /* MHRackDetailsViewController.m in Sources */,
+				6535A1D7152EB0E000384FF0 /* RackEditViewController.m in Sources */,
 				6535A1DD1530CC4100384FF0 /* MHTableViewController.m in Sources */,
 				6535A1E91531490E00384FF0 /* MHCageView.m in Sources */,
 				6535A1F91532966300384FF0 /* MHCageDetailsViewController.m in Sources */,
+				80F57E17153AB65800D91E7D /* MouseHouse.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,6 +589,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		80F57E15153AB65800D91E7D /* MouseHouse.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				80F57E16153AB65800D91E7D /* MouseHouse.xcdatamodel */,
+			);
+			currentVersion = 80F57E16153AB65800D91E7D /* MouseHouse.xcdatamodel */;
+			path = MouseHouse.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6535A179152EA21400384FF0 /* Project object */;
 }

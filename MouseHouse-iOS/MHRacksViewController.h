@@ -11,13 +11,16 @@
 
 @class MHCagesViewController;
 
-@interface MHRacksViewController : MHTableViewController
+@interface MHRacksViewController : MHTableViewController  <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) MHCagesViewController *cagesViewController;
 @property (strong, nonatomic) NSMutableArray *racks;
 @property (strong, nonatomic) NSString *selectedRackId;
 @property (assign, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
+
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 
 @end

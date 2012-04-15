@@ -52,7 +52,6 @@
         _rack = rack;
         
         // Update the view.
-        [self refresh:nil];
 
 //    if (self.masterPopoverController != nil) {
 //        [self.masterPopoverController dismissPopoverAnimated:YES];
@@ -115,7 +114,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.resource = MHBaseResource;
     //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"black-Linen"]]];
 }
 
@@ -138,7 +136,6 @@
 - (void)cageDetailsSaveButtonClickedForCage:(NSMutableDictionary *)cage
 {
     [cage setObject:[_rack objectForKey:@"_id"] forKey:@"mouse_rack_id"];
-    [self saveObject:cage];
     [_activateCagePopover dismissPopoverAnimated:YES];
 }
 
@@ -210,20 +207,5 @@
     self.masterPopoverController = nil;
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    // do something with the data
-    // receivedData is declared as a method instance elsewhere
-    NSLog(@"Succeeded! Received %d bytes of data for resource: %@",[self.receivedData length], MHBaseResource);
-    
-    NSError *error;
-    id jsonObject = [NSJSONSerialization JSONObjectWithData:self.receivedData options:NSJSONReadingMutableContainers | NSJSONReadingAllowFragments error:&error];
-    
-    if ([jsonObject isKindOfClass:[NSMutableDictionary class]]) {
-        NSLog(@"JSON Object: %@", [jsonObject description]);
-    }
-    [self configureView];
-    self.receivedData = nil;
-}
 
 @end

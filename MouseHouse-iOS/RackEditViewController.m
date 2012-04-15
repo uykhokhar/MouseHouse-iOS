@@ -6,45 +6,80 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MHRackDetailsViewController.h"
+#import "RackEditViewController.h"
 #import "MHRacksViewController.h"
 
-#define MHResource    @"mouse_racks"
 #define MHIDKey             @"_id"
 #define MHLabelKey          @"label"
 #define MHColumnsKey        @"columns"
 #define MHRowsKey           @"rows"
 
-@interface MHRackDetailsViewController ()
+@interface RackEditViewController ()
+
+@property (strong, nonatomic) NSManagedObjectContext *editingObjectContext;
 
 @end
 
-@implementation MHRackDetailsViewController
+@implementation RackEditViewController
 @synthesize rackLabelTextField = _rackLabelTextField;
 @synthesize columnsTextField = _columnsTextField;
 @synthesize rowsTextField = _rowsTextField;
 @synthesize rack = _rack;
+@synthesize editingObjectContext = _editingObjectContext;
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    id appDelegate = [[UIApplication sharedApplication] delegate];
+    NSPersistentStoreCoordinator *coordinator = [appDelegate persistentStoreCoordinator];
+    _editingObjectContext = [[NSManagedObjectContext alloc] init];
+    [_editingObjectContext setPersistentStoreCoordinator:coordinator];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewDidUnload
+{
+    [self setRackLabelTextField:nil];
+    [self setColumnsTextField:nil];
+    [self setRowsTextField:nil];
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (!_rack) {
+        NSEntityDescription *rackEntity = [NSEntityDescription entityForName:@"Rack" inManagedObjectContext:_editingObjectContext];
+        _rack = [[NSManagedObject alloc] initWithEntity:rackEntity insertIntoManagedObjectContext:_editingObjectContext];
+    }
+    _rackLabelTextField.text = [_rack valueForKey:MHLabelKey];
+    _columnsTextField.text = [[_rack valueForKey:MHColumnsKey] description];
+    _rowsTextField.text = [[_rack valueForKey:MHRowsKey] description];
+   [super viewWillAppear:animated];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+	return YES;
+}
+
 - (IBAction)cancel:(id)sender 
 {   
     self.rack = nil;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    if (_rack) {
-        _rackLabelTextField.text = [_rack objectForKey:MHLabelKey];
-        _columnsTextField.text = [[_rack objectForKey:MHColumnsKey] description];
-        _rowsTextField.text = [[_rack objectForKey:MHRowsKey] description];
-    } else {
-        _rackLabelTextField.text = @"New Rack";
-        _columnsTextField.text = [NSString stringWithFormat:@"%d", 7];
-        _rowsTextField.text = [NSString stringWithFormat:@"%d", 10];
-    }
-}
 
 - (IBAction)save:(id)sender 
 {
@@ -62,37 +97,21 @@
     }
     if (!_rack)
         _rack = [NSMutableDictionary dictionary];
-    [_rack setObject:self.rackLabelTextField.text forKey:MHLabelKey];
-    [_rack setObject:self.columnsTextField.text forKey:MHColumnsKey];
-    [_rack setObject:self.rowsTextField.text forKey:MHRowsKey];
-    [self saveObject:_rack];
+    [_rack setValue:self.rackLabelTextField.text forKey:MHLabelKey];
+    [_rack setValue:self.columnsTextField.text forKey:MHColumnsKey];
+    [_rack setValue:self.rowsTextField.text forKey:MHRowsKey];
+    //[self saveObject:_rack];
 }
 
-- (void)viewDidLoad
+- (void)setRackManagedObjectID:(NSManagedObjectID *)rackManagedObjectID
 {
-    [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.resource = MHResource;
-}
-
-- (void)viewDidUnload
-{
-    [self setRackLabelTextField:nil];
-    [self setColumnsTextField:nil];
-    [self setRowsTextField:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-	return YES;
+    if (rackManagedObjectID) {
+        _rack = [_editingObjectContext objectWithID:rackManagedObjectID];
+    } else {
+        NSEntityDescription *rackEntity = [NSEntityDescription entityForName:@"Rack" inManagedObjectContext:_editingObjectContext];
+        _rack = [[NSManagedObject alloc] initWithEntity:rackEntity insertIntoManagedObjectContext:_editingObjectContext];
+    }
+    
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -180,23 +199,5 @@
 //     [self.navigationController pushViewController:detailViewController animated:YES];
 //     */
 //}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    // do something with the data
-    // receivedData is declared as a method instance elsewhere
-    NSLog(@"Succeeded! Received %d bytes of data",[self.receivedData length]);
-    
-    NSError *error;
-    id jsonObject = [NSJSONSerialization JSONObjectWithData:self.receivedData options:NSJSONReadingMutableContainers | NSJSONReadingAllowFragments error:&error];
-    TFLog(@"JSON Object: %@", [jsonObject description]);
-    if (![_rack objectForKey:MHIDKey]) {
-        [(MHRacksViewController *)[self.navigationController.viewControllers objectAtIndex:0] setSelectedRackId:[jsonObject objectForKey:MHIDKey]];
-    }
-    [(MHRacksViewController *)[self.navigationController.viewControllers objectAtIndex:0] refresh:nil];
-    [self.navigationController popViewControllerAnimated:YES];
-    _rack = nil;
-    self.receivedData = nil;
-}
 
 @end
