@@ -32,13 +32,17 @@
 
 
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     if (_rack) {
         _rackLabelTextField.text = [_rack objectForKey:MHLabelKey];
         _columnsTextField.text = [[_rack objectForKey:MHColumnsKey] description];
         _rowsTextField.text = [[_rack objectForKey:MHRowsKey] description];
+    } else {
+        _rackLabelTextField.text = @"New Rack";
+        _columnsTextField.text = [NSString stringWithFormat:@"%d", 7];
+        _rowsTextField.text = [NSString stringWithFormat:@"%d", 10];
     }
 }
 
@@ -185,7 +189,7 @@
     
     NSError *error;
     id jsonObject = [NSJSONSerialization JSONObjectWithData:self.receivedData options:NSJSONReadingMutableContainers | NSJSONReadingAllowFragments error:&error];
-    NSLog(@"JSON Object: %@", [jsonObject description]);
+    TFLog(@"JSON Object: %@", [jsonObject description]);
     if (![_rack objectForKey:MHIDKey]) {
         [(MHRacksViewController *)[self.navigationController.viewControllers objectAtIndex:0] setSelectedRackId:[jsonObject objectForKey:MHIDKey]];
     }

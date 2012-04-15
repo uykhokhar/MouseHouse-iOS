@@ -164,7 +164,7 @@
     
     NSError *error;
     id jsonObject = [NSJSONSerialization JSONObjectWithData:self.receivedData options:NSJSONReadingMutableContainers | NSJSONReadingAllowFragments error:&error];
-    NSLog(@"JSON Object: %@", [jsonObject description]);
+    TFLog(@"JSON Object: %@", [jsonObject description]);
     _racks = jsonObject;
     NSLog(@"Racks count: %d", [_racks count]);
     self.receivedData = nil;

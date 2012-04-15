@@ -8,15 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+/** MHAuthenticationChallengeHandler
+ */
+
 @interface MHAuthenticationChallengeHandler : NSObject
 
 @property(strong, nonatomic) NSURLAuthenticationChallenge *challenge;
 @property(strong, nonatomic) UIViewController *parentViewController;
 @property(strong, nonatomic) NSURLCredential *credential;
 
-// Returns a challenge handler that's prepared to handle the specified challenge 
-// (and that presents any modal view controllers on top of parentViewController). 
-// Alternatively, returns nil if no one is prepared to handle this challenge.
+/** Returns a challenge handler that's prepared to handle the specified challenge 
+ (and that presents any modal view controllers on top of parentViewController). 
+ Alternatively, returns nil if no one is prepared to handle this challenge.
+ */
+
 - (id)initWithChallenge:(NSURLAuthenticationChallenge *)challenge parentViewController:(UIViewController *)parentViewController;
 - (void)start;
 - (void)stop;

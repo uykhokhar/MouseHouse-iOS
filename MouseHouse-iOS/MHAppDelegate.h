@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+/** App Delegate object
+* All methods are class level
+*/
+
 @interface MHAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

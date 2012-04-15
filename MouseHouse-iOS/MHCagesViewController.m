@@ -52,7 +52,7 @@
         _rack = rack;
         
         // Update the view.
-        [self configureView];
+        [self refresh:nil];
 
 //    if (self.masterPopoverController != nil) {
 //        [self.masterPopoverController dismissPopoverAnimated:YES];
@@ -115,7 +115,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self configureView];
     self.resource = MHBaseResource;
     //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"black-Linen"]]];
 }
@@ -215,7 +214,7 @@
 {
     // do something with the data
     // receivedData is declared as a method instance elsewhere
-    NSLog(@"Succeeded! Received %d bytes of data",[self.receivedData length]);
+    NSLog(@"Succeeded! Received %d bytes of data for resource: %@",[self.receivedData length], MHBaseResource);
     
     NSError *error;
     id jsonObject = [NSJSONSerialization JSONObjectWithData:self.receivedData options:NSJSONReadingMutableContainers | NSJSONReadingAllowFragments error:&error];
@@ -223,6 +222,7 @@
     if ([jsonObject isKindOfClass:[NSMutableDictionary class]]) {
         NSLog(@"JSON Object: %@", [jsonObject description]);
     }
+    [self configureView];
     self.receivedData = nil;
 }
 
