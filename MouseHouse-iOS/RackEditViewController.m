@@ -61,7 +61,7 @@
 {
     if (!_rack) {
         NSEntityDescription *rackEntity = [NSEntityDescription entityForName:@"Rack" inManagedObjectContext:_editingObjectContext];
-        _rack = [[NSManagedObject alloc] initWithEntity:rackEntity insertIntoManagedObjectContext:_editingObjectContext];
+        _rack = [[Rack alloc] initWithEntity:rackEntity insertIntoManagedObjectContext:_editingObjectContext];
     }
     _rackLabelTextField.text = [_rack valueForKey:MHLabelKey];
     _columnsTextField.text = [[_rack valueForKey:MHColumnsKey] description];
@@ -97,19 +97,20 @@
     }
     if (!_rack)
         _rack = [NSMutableDictionary dictionary];
-    [_rack setValue:self.rackLabelTextField.text forKey:MHLabelKey];
-    [_rack setValue:self.columnsTextField.text forKey:MHColumnsKey];
-    [_rack setValue:self.rowsTextField.text forKey:MHRowsKey];
-    //[self saveObject:_rack];
+    [_rack setLabel:self.rackLabelTextField.text];
+    [_rack setColumns:[self.columnsTextField.text intValue]];
+    [_rack setRows:[self.rowsTextField.text intValue]];
+    [self.editingObjectContext save:nil]; 
+    
 }
 
 - (void)setRackManagedObjectID:(NSManagedObjectID *)rackManagedObjectID
 {
     if (rackManagedObjectID) {
-        _rack = [_editingObjectContext objectWithID:rackManagedObjectID];
+        _rack = (Rack *)[_editingObjectContext objectWithID:rackManagedObjectID];
     } else {
         NSEntityDescription *rackEntity = [NSEntityDescription entityForName:@"Rack" inManagedObjectContext:_editingObjectContext];
-        _rack = [[NSManagedObject alloc] initWithEntity:rackEntity insertIntoManagedObjectContext:_editingObjectContext];
+        _rack = [[Rack alloc] initWithEntity:rackEntity insertIntoManagedObjectContext:_editingObjectContext];
     }
     
 }

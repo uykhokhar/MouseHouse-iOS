@@ -41,6 +41,7 @@
 		655481A11537BFE900E0ADBC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 655481A01537BFE900E0ADBC /* libz.dylib */; };
 		6563091F153A4E6400F451D5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65630919153A4E1700F451D5 /* CoreData.framework */; };
 		80F57E17153AB65800D91E7D /* MouseHouse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80F57E15153AB65800D91E7D /* MouseHouse.xcdatamodeld */; };
+		80F57E1D153ABA4100D91E7D /* Rack.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F57E1C153ABA4100D91E7D /* Rack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,8 @@
 		655481A01537BFE900E0ADBC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		65630919153A4E1700F451D5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		80F57E16153AB65800D91E7D /* MouseHouse.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MouseHouse.xcdatamodel; sourceTree = "<group>"; };
+		80F57E1B153ABA4100D91E7D /* Rack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rack.h; sourceTree = "<group>"; };
+		80F57E1C153ABA4100D91E7D /* Rack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rack.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +177,8 @@
 				65E1401B15392E4900375623 /* Classes */,
 				6535A198152EA21400384FF0 /* MainStoryboard.storyboard */,
 				80F57E15153AB65800D91E7D /* MouseHouse.xcdatamodeld */,
+				80F57E1B153ABA4100D91E7D /* Rack.h */,
+				80F57E1C153ABA4100D91E7D /* Rack.m */,
 				6535A1F2153233FA00384FF0 /* cage-background.png */,
 				6535A1F3153233FA00384FF0 /* cage-background@2x.png */,
 				6535A1D8152EB9C200384FF0 /* mockup_cage_card.png */,
@@ -397,6 +402,7 @@
 				6535A1E91531490E00384FF0 /* MHCageView.m in Sources */,
 				6535A1F91532966300384FF0 /* MHCageDetailsViewController.m in Sources */,
 				80F57E17153AB65800D91E7D /* MouseHouse.xcdatamodeld in Sources */,
+				80F57E1D153ABA4100D91E7D /* Rack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

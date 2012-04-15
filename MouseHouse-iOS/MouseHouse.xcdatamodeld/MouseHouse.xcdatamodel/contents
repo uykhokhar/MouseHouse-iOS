@@ -30,12 +30,12 @@
         <relationship name="litters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Litter" inverseName="parents" inverseEntity="Litter" syncable="YES"/>
     </entity>
     <entity name="Note" syncable="YES"/>
-    <entity name="Rack" syncable="YES">
+    <entity name="Rack" representedClassName="Rack" syncable="YES">
         <attribute name="columns" optional="YES" attributeType="Integer 16" minValueString="1" defaultValueString="7" syncable="YES"/>
         <attribute name="createdOn" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="label" optional="YES" attributeType="String" defaultValueString="New Rack" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="rows" optional="YES" attributeType="Integer 16" minValueString="1" defaultValueString="19" syncable="YES"/>
+        <attribute name="rows" optional="YES" attributeType="Integer 16" minValueString="1" defaultValueString="10" syncable="YES"/>
     </entity>
     <elements>
         <element name="Cage" positionX="160" positionY="192" width="128" height="120"/>

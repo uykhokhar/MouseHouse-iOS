@@ -68,7 +68,7 @@
 {
     if ([@"Edit Segue" isEqualToString:[segue identifier]]) {
         RackEditViewController *vc = [segue destinationViewController];
-        
+        [vc setRackManagedObjectID:[self.cagesViewController.rack objectID]];
     }
 }
 
@@ -89,7 +89,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 
     NSDictionary *rack = [[[self fetchedResultsController] fetchedObjects] objectAtIndex:indexPath.row];
-    cell.textLabel.text = [rack objectForKey:@"label"];
+    cell.textLabel.text = [rack valueForKey:@"label"];
     return cell;
 }
 

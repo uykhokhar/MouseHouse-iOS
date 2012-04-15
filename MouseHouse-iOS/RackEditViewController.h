@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Rack.h"
 
 @interface RackEditViewController : UITableViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *rackLabelTextField;
 @property (weak, nonatomic) IBOutlet UITextField *columnsTextField;
 @property (weak, nonatomic) IBOutlet UITextField *rowsTextField;
-@property (strong, nonatomic) NSManagedObject *rack;
+@property (strong, nonatomic) Rack *rack;
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)save:(id)sender;
