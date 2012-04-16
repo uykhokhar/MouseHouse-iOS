@@ -40,9 +40,16 @@
 		6554819E1537BFDD00E0ADBC /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6554819A1537BFDD00E0ADBC /* release_notes.txt */; };
 		655481A11537BFE900E0ADBC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 655481A01537BFE900E0ADBC /* libz.dylib */; };
 		6563091F153A4E6400F451D5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65630919153A4E1700F451D5 /* CoreData.framework */; };
+		6591AF61153BB56A00C4ED2E /* Rack.h in Sources */ = {isa = PBXBuildFile; fileRef = 6591AF5F153BB56A00C4ED2E /* Rack.h */; };
+		6591AF62153BB56A00C4ED2E /* Rack.m in Sources */ = {isa = PBXBuildFile; fileRef = 6591AF60153BB56A00C4ED2E /* Rack.m */; };
 		65AB0327153B4C0600D23B5C /* CageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AB0326153B4C0500D23B5C /* CageViewController.m */; };
+		65AB032A153B618600D23B5C /* Cage.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AB0329153B618600D23B5C /* Cage.m */; };
+		65AB0333153B622500D23B5C /* _Rack.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AB0332153B622500D23B5C /* _Rack.m */; };
+		65AB0336153B675F00D23B5C /* UIView+TagExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AB0335153B675F00D23B5C /* UIView+TagExtensions.m */; };
+		65AB0337153B675F00D23B5C /* UIView+TagExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AB0335153B675F00D23B5C /* UIView+TagExtensions.m */; };
+		65AB0340153B819500D23B5C /* CageDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AB033F153B819500D23B5C /* CageDetailsViewController.m */; };
+		65AB0341153B819500D23B5C /* CageDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AB033F153B819500D23B5C /* CageDetailsViewController.m */; };
 		80F57E17153AB65800D91E7D /* MouseHouse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80F57E15153AB65800D91E7D /* MouseHouse.xcdatamodeld */; };
-		80F57E1D153ABA4100D91E7D /* Rack.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F57E1C153ABA4100D91E7D /* Rack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,11 +112,19 @@
 		6554819B1537BFDD00E0ADBC /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = TestFlight.h; sourceTree = "<group>"; };
 		655481A01537BFE900E0ADBC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		65630919153A4E1700F451D5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		6591AF5F153BB56A00C4ED2E /* Rack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = Rack.h; sourceTree = "<group>"; };
+		6591AF60153BB56A00C4ED2E /* Rack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rack.m; sourceTree = "<group>"; };
 		65AB0325153B4C0500D23B5C /* CageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CageViewController.h; sourceTree = "<group>"; };
 		65AB0326153B4C0500D23B5C /* CageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CageViewController.m; sourceTree = "<group>"; };
+		65AB0328153B618500D23B5C /* Cage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cage.h; sourceTree = "<group>"; };
+		65AB0329153B618600D23B5C /* Cage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cage.m; sourceTree = "<group>"; };
+		65AB0331153B622500D23B5C /* _Rack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Rack.h; sourceTree = "<group>"; };
+		65AB0332153B622500D23B5C /* _Rack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Rack.m; sourceTree = "<group>"; };
+		65AB0334153B675F00D23B5C /* UIView+TagExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TagExtensions.h"; sourceTree = "<group>"; };
+		65AB0335153B675F00D23B5C /* UIView+TagExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TagExtensions.m"; sourceTree = "<group>"; };
+		65AB033E153B819500D23B5C /* CageDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CageDetailsViewController.h; sourceTree = "<group>"; };
+		65AB033F153B819500D23B5C /* CageDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CageDetailsViewController.m; sourceTree = "<group>"; };
 		80F57E16153AB65800D91E7D /* MouseHouse.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MouseHouse.xcdatamodel; sourceTree = "<group>"; };
-		80F57E1B153ABA4100D91E7D /* Rack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rack.h; sourceTree = "<group>"; };
-		80F57E1C153ABA4100D91E7D /* Rack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rack.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,8 +195,6 @@
 				65E1401B15392E4900375623 /* Classes */,
 				6535A198152EA21400384FF0 /* MainStoryboard.storyboard */,
 				80F57E15153AB65800D91E7D /* MouseHouse.xcdatamodeld */,
-				80F57E1B153ABA4100D91E7D /* Rack.h */,
-				80F57E1C153ABA4100D91E7D /* Rack.m */,
 				6535A1F2153233FA00384FF0 /* cage-background.png */,
 				6535A1F3153233FA00384FF0 /* cage-background@2x.png */,
 				6535A1D8152EB9C200384FF0 /* mockup_cage_card.png */,
@@ -254,6 +267,40 @@
 			name = Libraries;
 			sourceTree = "<group>";
 		};
+		65AB033C153B728C00D23B5C /* Racks */ = {
+			isa = PBXGroup;
+			children = (
+				6591AF5F153BB56A00C4ED2E /* Rack.h */,
+				6591AF60153BB56A00C4ED2E /* Rack.m */,
+				65AB0331153B622500D23B5C /* _Rack.h */,
+				65AB0332153B622500D23B5C /* _Rack.m */,
+				6535A1D4152EB0E000384FF0 /* RackEditViewController.h */,
+				6535A1D5152EB0E000384FF0 /* RackEditViewController.m */,
+				6535A19B152EA21400384FF0 /* RacksTableViewController.h */,
+				6535A19C152EA21400384FF0 /* RacksTableViewController.m */,
+				6535A19E152EA21400384FF0 /* RackViewController.h */,
+				6535A19F152EA21400384FF0 /* RackViewController.m */,
+			);
+			name = Racks;
+			sourceTree = "<group>";
+		};
+		65AB033D153B729D00D23B5C /* Cages */ = {
+			isa = PBXGroup;
+			children = (
+				65AB0328153B618500D23B5C /* Cage.h */,
+				65AB0329153B618600D23B5C /* Cage.m */,
+				65AB033E153B819500D23B5C /* CageDetailsViewController.h */,
+				65AB033F153B819500D23B5C /* CageDetailsViewController.m */,
+				65AB0325153B4C0500D23B5C /* CageViewController.h */,
+				65AB0326153B4C0500D23B5C /* CageViewController.m */,
+				6535A1F61532966200384FF0 /* MHCageDetailsViewController.h */,
+				6535A1F71532966200384FF0 /* MHCageDetailsViewController.m */,
+				6535A1E61531490C00384FF0 /* MHCageView.h */,
+				6535A1E71531490D00384FF0 /* MHCageView.m */,
+			);
+			name = Cages;
+			sourceTree = "<group>";
+		};
 		65E1401B15392E4900375623 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,18 +311,10 @@
 				6535A1D1152EACCE00384FF0 /* MHViewController.m */,
 				6535A1DA1530CC4000384FF0 /* MHTableViewController.h */,
 				6535A1DB1530CC4100384FF0 /* MHTableViewController.m */,
-				6535A19B152EA21400384FF0 /* RacksTableViewController.h */,
-				6535A19C152EA21400384FF0 /* RacksTableViewController.m */,
-				6535A1D4152EB0E000384FF0 /* RackEditViewController.h */,
-				6535A1D5152EB0E000384FF0 /* RackEditViewController.m */,
-				6535A19E152EA21400384FF0 /* RackViewController.h */,
-				6535A19F152EA21400384FF0 /* RackViewController.m */,
-				6535A1E61531490C00384FF0 /* MHCageView.h */,
-				6535A1E71531490D00384FF0 /* MHCageView.m */,
-				65AB0325153B4C0500D23B5C /* CageViewController.h */,
-				65AB0326153B4C0500D23B5C /* CageViewController.m */,
-				6535A1F61532966200384FF0 /* MHCageDetailsViewController.h */,
-				6535A1F71532966200384FF0 /* MHCageDetailsViewController.m */,
+				65AB033C153B728C00D23B5C /* Racks */,
+				65AB033D153B729D00D23B5C /* Cages */,
+				65AB0334153B675F00D23B5C /* UIView+TagExtensions.h */,
+				65AB0335153B675F00D23B5C /* UIView+TagExtensions.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -407,8 +446,13 @@
 				6535A1E91531490E00384FF0 /* MHCageView.m in Sources */,
 				6535A1F91532966300384FF0 /* MHCageDetailsViewController.m in Sources */,
 				80F57E17153AB65800D91E7D /* MouseHouse.xcdatamodeld in Sources */,
-				80F57E1D153ABA4100D91E7D /* Rack.m in Sources */,
 				65AB0327153B4C0600D23B5C /* CageViewController.m in Sources */,
+				65AB032A153B618600D23B5C /* Cage.m in Sources */,
+				65AB0333153B622500D23B5C /* _Rack.m in Sources */,
+				65AB0336153B675F00D23B5C /* UIView+TagExtensions.m in Sources */,
+				65AB0340153B819500D23B5C /* CageDetailsViewController.m in Sources */,
+				6591AF61153BB56A00C4ED2E /* Rack.h in Sources */,
+				6591AF62153BB56A00C4ED2E /* Rack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +461,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6535A1B5152EA21400384FF0 /* MouseHouse_iOSTests.m in Sources */,
+				65AB0337153B675F00D23B5C /* UIView+TagExtensions.m in Sources */,
+				65AB0341153B819500D23B5C /* CageDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

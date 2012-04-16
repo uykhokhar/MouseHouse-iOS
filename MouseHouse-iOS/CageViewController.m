@@ -7,6 +7,14 @@
 //
 
 #import "CageViewController.h"
+#import "CageDetailsViewController.h"
+#import "Rack.h"
+#import "Cage.h"
+
+
+enum MHCageViewTags {
+    MHInactiveCageLabelTag = 10
+    };
 
 @interface CageViewController ()
 
@@ -14,8 +22,10 @@
 
 @implementation CageViewController
 
-@synthesize row = _row;
 @synthesize column = _column;
+@synthesize row = _row;
+@synthesize rack = _rack;
+@synthesize cage = _cage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,9 +38,16 @@
 
 - (void)viewDidLoad
 {
+    assert(self.rack != nil);
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cage-background"]];
+    _cage = [self.rack cageAtColumn:self.column row:self.row];
+    if (!_cage) {
+        [[self.view labelWithTag:MHInactiveCageLabelTag] setHidden:YES];
+    } else {
+        [[self.view labelWithTag:MHInactiveCageLabelTag] setHidden:NO];
+    }
 }
 
 - (void)viewDidUnload
@@ -44,4 +61,22 @@
 	return YES;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"COL: %@  \n ROW: %@", _column, _row);
+    UINavigationController *navController = (UINavigationController *)[segue destinationViewController] ;
+    CageDetailsViewController *vc = [[navController viewControllers] objectAtIndex:0];
+    NSManagedObjectContext *_editingContext = [[NSManagedObjectContext alloc] init];
+    [_editingContext setPersistentStoreCoordinator:[self.rack.managedObjectContext persistentStoreCoordinator]];
+        if (_cage) {
+        vc.cage = (Cage *)[_editingContext objectWithID:[_cage objectID]];
+    } else {
+        Rack *rack = (Rack *)[_editingContext objectWithID:[_rack objectID]];
+        Cage *cage = [NSEntityDescription insertNewObjectForEntityForName:@"Cage" inManagedObjectContext:_editingContext];
+        [cage setValue:rack forKey:@"rack"];
+        [cage setValue:_column forKey:@"column"];
+        [cage setValue:_row forKey:@"row"];
+        vc.cage = cage;
+    }
+}
 @end

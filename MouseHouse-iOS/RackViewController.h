@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MHViewController.h"
-#import "MHCageView.h"
 #import "MHCageDetailsViewController.h"
 #import "Rack.h"
 
-@interface RackViewController : UIViewController <UISplitViewControllerDelegate, UIScrollViewDelegate, MHCageViewDelegate, MHCageDetailsDelegate>
+@interface RackViewController : UIViewController <UISplitViewControllerDelegate, UIScrollViewDelegate, NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) Rack *rack;
 @property (strong, nonatomic) NSMutableArray *cageViewControllers;

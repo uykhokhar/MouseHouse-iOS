@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Cage.h"
+
 @interface CageDetailsViewController : UITableViewController
+
+@property (strong, nonatomic) Cage *cage;
 
 @end

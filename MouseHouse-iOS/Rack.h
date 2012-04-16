@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "_Rack.h"
 
 @class Cage;
 
-@interface Rack : NSManagedObject
+@interface Rack : _Rack
 
 @property (nonatomic) int16_t columns;
 @property (nonatomic) NSTimeInterval createdOn;

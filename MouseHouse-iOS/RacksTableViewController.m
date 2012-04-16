@@ -152,14 +152,19 @@
     }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    // Set relationshup keys for prefetching
+    NSArray *relationshipKeys = [NSArray arrayWithObject:@"cages"];
+    [fetchRequest setRelationshipKeyPathsForPrefetching:relationshipKeys];
+    
     // Edit the entity name as appropriate.
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Rack" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
-    [fetchRequest setFetchBatchSize:20];
+    //[fetchRequest setFetchBatchSize:20];
     
-    // Edit the sort key as appropriate.
+        // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"label" ascending:NO];
     NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
     
@@ -167,7 +172,7 @@
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Racks"];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     

@@ -14,6 +14,8 @@
 
 @implementation CageDetailsViewController
 
+@synthesize cage = _cage;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -50,16 +52,27 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
+{   
     // Return the number of rows in the section.
-    return 0;
+    NSInteger numberOfRows;
+    switch (section) {
+        case 0:
+            numberOfRows = 0;
+            break;
+        case 1:
+            numberOfRows = 0;
+            break;
+        default:
+            numberOfRows = 0;
+            break;
+    }
+
+    return numberOfRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -122,6 +135,12 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (void)setCage:(Cage *)cage
+{
+    _cage = cage;
+    [self.tableView reloadData];
 }
 
 @end

@@ -9,11 +9,10 @@
 #import "RackViewController.h"
 #import "CageViewController.h"
 
-#define MHBaseResource  @"cages"
-
 @interface RackViewController () 
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 @property (strong, nonatomic) UIPopoverController *activateCagePopover;
+
 - (void)configureView;
 @end
 
@@ -29,19 +28,19 @@
 
 - (void)cageViewTapped:(id)sender
 {
-    MHCageView *cageView = sender;
-    if (!cageView.cage) {
-        MHCageDetailsViewController *cageDetailsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Activate Cage Popover"];
-        cageDetailsVC.delegate = self;
-        cageDetailsVC.cage = [NSMutableDictionary dictionaryWithObjectsAndKeys:cageView.column, @"column", cageView.row, @"row", nil];
-        _activateCagePopover = [[UIPopoverController alloc] initWithContentViewController:cageDetailsVC];
-        
-        _activateCagePopover.popoverContentSize = CGSizeMake(320.0, 200.0);
-        CGRect frame = cageView.frame;
-        frame.origin.x += 40 - _cagesScrollView.contentOffset.x;
-        frame.origin.y += 40 - _cagesScrollView.contentOffset.y;
-        [_activateCagePopover presentPopoverFromRect:frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionLeft | UIPopoverArrowDirectionRight animated:YES];
-    }
+//    UIView *cageView = sender;
+//    if (!cageView.cage) {
+//        MHCageDetailsViewController *cageDetailsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Activate Cage Popover"];
+//        cageDetailsVC.delegate = self;
+//        cageDetailsVC.cage = [NSMutableDictionary dictionaryWithObjectsAndKeys:cageView.column, @"column", cageView.row, @"row", nil];
+//        _activateCagePopover = [[UIPopoverController alloc] initWithContentViewController:cageDetailsVC];
+//        
+//        _activateCagePopover.popoverContentSize = CGSizeMake(320.0, 200.0);
+//        CGRect frame = cageView.frame;
+//        frame.origin.x += 40 - _cagesScrollView.contentOffset.x;
+//        frame.origin.y += 40 - _cagesScrollView.contentOffset.y;
+//        [_activateCagePopover presentPopoverFromRect:frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionLeft | UIPopoverArrowDirectionRight animated:YES];
+//    }
 }
 
 #pragma mark - Managing the detail item
@@ -77,7 +76,6 @@
         NSInteger row = 0;
         for (column = 0; column < self.rack.columns; column++) {
             UILabel *columnHeader = [[UILabel alloc] initWithFrame:CGRectMake(column*254, 0, 254, _rackColumnHeaderScrollView.bounds.size.height)];
-            UILabel *rowHeader;
             [columnHeader setBackgroundColor:[UIColor whiteColor]];
             [columnHeader setTextAlignment:UITextAlignmentCenter];
             [columnHeader setTextColor:[UIColor blackColor]];
@@ -85,7 +83,7 @@
             [_rackColumnHeaderScrollView addSubview:columnHeader];
             for (row = 0; row < self.rack.rows; row++) {
                 if (column == 0) {
-                    rowHeader = [[UILabel alloc] initWithFrame:CGRectMake(0, row*125, _rackRowHeaderScrollView.bounds.size.width, 125)];
+                    UILabel *rowHeader = [[UILabel alloc] initWithFrame:CGRectMake(0, row*125, _rackRowHeaderScrollView.bounds.size.width, 125)];
                     [rowHeader setBackgroundColor:[UIColor whiteColor]];
                     [rowHeader setTextAlignment:UITextAlignmentCenter];
                     [rowHeader setTextColor:[UIColor blackColor]];
@@ -93,11 +91,14 @@
                     [_rackRowHeaderScrollView addSubview:rowHeader];
                 }
                 cageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Cage View Controller"];
+                [cageViewController setColumn:columnHeader.text];
+                [cageViewController setRow:[NSString stringWithFormat:@"%d", row +1]];
+                [cageViewController setRack:self.rack];
+                
                 UIView *cageView = cageViewController.view;
                 [cageView  setFrame:CGRectMake(column*254, row*125, 254, 125)];
                 [_cagesScrollView addSubview:cageView];
-                [cageViewController setColumn:columnHeader.text];
-                [cageViewController setRow:rowHeader.text];
+                
                 [self.cageViewControllers addObject:cageViewController];
                 cageViewController = nil;
             }

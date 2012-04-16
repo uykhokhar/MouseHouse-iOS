@@ -8,6 +8,10 @@
 
 #import <CoreData/CoreData.h>
 
+@class Cage;
+
 @interface _Rack : NSManagedObject
+
+- (Cage *)cageAtColumn:(NSString *)column row:(NSString *)row;
 
 @end
