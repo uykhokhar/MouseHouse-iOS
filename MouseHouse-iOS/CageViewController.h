@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Rack.h"
-#import "Cage.h"
+@class Rack;
+@class Cage;
 
-@interface CageViewController : UIViewController
+@interface CageViewController : UIViewController  <UIPopoverControllerDelegate>
 
 @property (strong, nonatomic) NSString *column;
 @property (strong, nonatomic) NSString *row;

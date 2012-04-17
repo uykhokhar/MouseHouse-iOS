@@ -8,31 +8,42 @@
         <attribute name="floodedOn" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="maxCapacity" optional="YES" attributeType="Integer 16" defaultValueString="6" syncable="YES"/>
         <attribute name="row" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="mice" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Mouse" inverseName="cage" inverseEntity="Mouse" syncable="YES"/>
         <relationship name="rack" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Rack" inverseName="cages" inverseEntity="Rack" syncable="YES"/>
     </entity>
-    <entity name="HealthCard" syncable="YES">
+    <entity name="HealthCard" representedClassName="HealthCard" syncable="YES">
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdOn" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="mouse" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Mouse" inverseName="healthCards" inverseEntity="Mouse" syncable="YES"/>
     </entity>
-    <entity name="Litter" syncable="YES">
+    <entity name="Litter" representedClassName="Litter" syncable="YES">
         <attribute name="bornOn" attributeType="Date" syncable="YES"/>
         <attribute name="diedOn" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="weanedOn" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="parents" optional="YES" toMany="YES" maxCount="2" deletionRule="Nullify" destinationEntity="Mouse" inverseName="litters" inverseEntity="Mouse" syncable="YES"/>
         <relationship name="pups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Mouse" inverseName="litter" inverseEntity="Mouse" syncable="YES"/>
     </entity>
-    <entity name="Mouse" syncable="YES">
+    <entity name="Mouse" representedClassName="Mouse" syncable="YES">
         <attribute name="bornOn" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="diedOn" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="earTag" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="genomeType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sex" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="strain" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="cage" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Cage" inverseName="mice" inverseEntity="Cage" syncable="YES"/>
         <relationship name="healthCards" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="HealthCard" inverseName="mouse" inverseEntity="HealthCard" syncable="YES"/>
         <relationship name="litter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Litter" inverseName="pups" inverseEntity="Litter" syncable="YES"/>
         <relationship name="litters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Litter" inverseName="parents" inverseEntity="Litter" syncable="YES"/>
+        <compoundIndexes>
+            <compoundIndex>
+                <index value="earTag"/>
+            </compoundIndex>
+            <compoundIndex>
+                <index value="cage"/>
+            </compoundIndex>
+        </compoundIndexes>
     </entity>
-    <entity name="Note" syncable="YES"/>
+    <entity name="Note" representedClassName="Note" syncable="YES"/>
     <entity name="Rack" representedClassName="Rack" syncable="YES">
         <attribute name="columns" optional="YES" attributeType="Integer 16" minValueString="1" defaultValueString="7" syncable="YES"/>
         <attribute name="createdOn" optional="YES" attributeType="Date" syncable="YES"/>
@@ -42,11 +53,11 @@
         <relationship name="cages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cage" inverseName="rack" inverseEntity="Cage" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Cage" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="Cage" positionX="160" positionY="192" width="128" height="180"/>
         <element name="HealthCard" positionX="160" positionY="192" width="128" height="90"/>
         <element name="Litter" positionX="160" positionY="192" width="128" height="120"/>
-        <element name="Mouse" positionX="160" positionY="192" width="128" height="165"/>
+        <element name="Mouse" positionX="160" positionY="192" width="128" height="195"/>
         <element name="Note" positionX="160" positionY="192" width="128" height="45"/>
-        <element name="Rack" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="Rack" positionX="160" positionY="192" width="128" height="135"/>
     </elements>
 </model>

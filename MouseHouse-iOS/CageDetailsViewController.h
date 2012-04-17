@@ -10,8 +10,14 @@
 
 #import "Cage.h"
 
+enum MHCageDetailsTags {
+    MHCageNumberTextFieldTag = 10
+}; 
+
 @interface CageDetailsViewController : UITableViewController
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (strong, nonatomic) Cage *cage;
 
 @end

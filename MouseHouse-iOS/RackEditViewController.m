@@ -59,8 +59,8 @@
     }
     _rackLabelTextField.text = _rack.label;
     _locationTextField.text = _rack.location;
-    _columnsTextField.text = [NSString stringWithFormat:@"%d", _rack.columns];
-    _rowsTextField.text = [NSString stringWithFormat:@"%d", _rack.rows];
+    _columnsTextField.text = [NSString stringWithFormat:@"%i", _rack.columns];
+    _rowsTextField.text = [NSString stringWithFormat:@"%i", _rack.rows];
    [super viewWillAppear:animated];
 }
 

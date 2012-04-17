@@ -14,6 +14,8 @@
 
 @implementation CageDetailsViewController
 
+@synthesize cancelButton = _cancelButton;
+@synthesize doneButton = _doneButton;
 @synthesize cage = _cage;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -39,6 +41,8 @@
 
 - (void)viewDidUnload
 {
+    [self setCancelButton:nil];
+    [self setDoneButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -69,7 +73,7 @@
             numberOfRows = 3;
             break;
         default:
-            numberOfRows = 5;
+            numberOfRows = [self.cage.mice count] > 0 ? [self.cage.mice count] : 1;
             break;
     }
 
@@ -80,12 +84,13 @@
 {
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 44)];
     [headerView setBackgroundColor:[UIColor clearColor]];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, headerView.bounds.size.width, 44)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, headerView.bounds.size.width -35, 44)];
     label.backgroundColor = [UIColor clearColor];
     label.font = [UIFont boldSystemFontOfSize:17.0];
     label.shadowColor = [UIColor whiteColor];
     label.shadowOffset = CGSizeMake(0, 1);
     [headerView addSubview:label];
+    UIButton *addMouseButton = nil;
     switch (section) {
         case 0:
             label.text = @"Cage Information";
@@ -94,6 +99,11 @@
             label.text = @"Notices";
             break;
         default:
+            addMouseButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
+            CGRect frame = addMouseButton.frame;
+            frame.origin = CGPointMake(headerView.bounds.size.width - 36, 7);
+            addMouseButton.frame = frame;
+            [headerView addSubview:addMouseButton];
             label.text = @"Mice";
             break;
     }    
@@ -103,12 +113,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *cellIdentifier = @"Cell";
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-   
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     switch (indexPath.section) {
         case 0:
             cellIdentifier = @"Cage number cell";
             cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+            [[cell textFieldWithTag:MHCageNumberTextFieldTag] setText:_cage.cageNumber];
             break;
         case 1:
             cellIdentifier = @"Notice cell";
@@ -129,10 +139,15 @@
             }
             break;
         default:
-            cellIdentifier = @"Mouse cell";
-            cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-            cell.textLabel.text = @"12345";
-            cell.detailTextLabel.text = @"Male";
+            if ([self.cage.mice count] > 0) {
+                cellIdentifier = @"Mouse cell";
+                cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+                cell.textLabel.text = @"ear tag";
+                cell.detailTextLabel.text = @"Sequence";
+            } else {
+                cell.textLabel.text = @"No mice.";
+                cell.detailTextLabel.text = @"Click add button to add mice to cage.";
+            }
             break;
     }
     
@@ -198,4 +213,19 @@
     [self.tableView reloadData];
 }
 
+- (IBAction)addMouseAction:(id)sender
+{
+    
+}
+
+- (IBAction)cancelAction:(id)sender
+{
+    
+    [[_cage managedObjectContext] rollback];
+}
+
+- (IBAction)doneAction:(id)sender
+{
+    
+}
 @end

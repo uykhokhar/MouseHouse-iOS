@@ -1,16 +1,14 @@
 //
-//  _Rack.h
+//  Rack+Extensions.h
 //  MouseHouse-iOS
 //
-//  Created by Daniel Brajkovic on 4/15/12.
+//  Created by Daniel Brajkovic on 4/17/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <CoreData/CoreData.h>
+#import "Rack.h"
 
-@class Cage;
-
-@interface _Rack : NSManagedObject
+@interface Rack (Extensions)
 
 - (Cage *)cageAtColumn:(NSString *)column row:(NSString *)row;
 

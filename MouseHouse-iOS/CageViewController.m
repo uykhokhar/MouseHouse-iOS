@@ -9,14 +9,20 @@
 #import "CageViewController.h"
 #import "CageDetailsViewController.h"
 #import "Rack.h"
+#import "Rack+Extensions.h"
 #import "Cage.h"
 
 
 enum MHCageViewTags {
-    MHInactiveCageLabelTag = 10
+    MHInactiveCageLabelTag = 10,
+    MHCageNumberLabelTag = 11
     };
 
 @interface CageViewController ()
+{
+    UIPopoverController *cageDetailsPopover;
+    CageDetailsViewController *detailsViewController;
+}
 
 @end
 
@@ -36,18 +42,25 @@ enum MHCageViewTags {
     return self;
 }
 
+- (void)configureCageView
+{
+    _cage = [self.rack cageAtColumn:self.column row:self.row];
+    
+    if (!_cage) {
+        [[self.view labelWithTag:MHInactiveCageLabelTag] setHidden:NO];
+    } else {
+        [[self.view labelWithTag:MHInactiveCageLabelTag] setHidden:YES];
+        [[self.view labelWithTag:MHCageNumberLabelTag] setText:_cage.cageNumber];
+    }
+}
+
 - (void)viewDidLoad
 {
     assert(self.rack != nil);
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cage-background"]];
-    _cage = [self.rack cageAtColumn:self.column row:self.row];
-    if (!_cage) {
-        [[self.view labelWithTag:MHInactiveCageLabelTag] setHidden:YES];
-    } else {
-        [[self.view labelWithTag:MHInactiveCageLabelTag] setHidden:NO];
-    }
+    [self configureCageView];
 }
 
 - (void)viewDidUnload
@@ -63,19 +76,48 @@ enum MHCageViewTags {
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    UINavigationController *navController = (UINavigationController *)[segue destinationViewController] ;
-    CageDetailsViewController *vc = [[navController viewControllers] objectAtIndex:0];
-    NSManagedObjectContext *_editingContext = [[NSManagedObjectContext alloc] init];
-    [_editingContext setPersistentStoreCoordinator:[self.rack.managedObjectContext persistentStoreCoordinator]];
+    UINavigationController *navController = (UINavigationController *)[segue destinationViewController];
+    cageDetailsPopover = [(UIStoryboardPopoverSegue *)segue popoverController];
+    cageDetailsPopover.delegate = self;
+    
+    detailsViewController = [[navController viewControllers] objectAtIndex:0];
+    detailsViewController.doneButton.target = self;
+    detailsViewController.doneButton.action = @selector(save:);
+    
+    detailsViewController = [[navController viewControllers] objectAtIndex:0];
+    detailsViewController.cancelButton.target = self;
+    detailsViewController.cancelButton.action = @selector(cancel:);
+    NSManagedObjectContext *moc = self.rack.managedObjectContext;
         if (_cage) {
-        vc.cage = (Cage *)[_editingContext objectWithID:[_cage objectID]];
+        detailsViewController.cage = (Cage *)[moc objectWithID:[_cage objectID]];
     } else {
-        Rack *rack = (Rack *)[_editingContext objectWithID:[_rack objectID]];
-        Cage *cage = [NSEntityDescription insertNewObjectForEntityForName:@"Cage" inManagedObjectContext:_editingContext];
-        [cage setValue:rack forKey:@"rack"];
+        Cage *cage = [NSEntityDescription insertNewObjectForEntityForName:@"Cage" inManagedObjectContext:moc];
+        [cage setValue:self.rack forKey:@"rack"];
         [cage setValue:_column forKey:@"column"];
         [cage setValue:_row forKey:@"row"];
-        vc.cage = cage;
+        detailsViewController.cage = cage;
     }
+    
 }
+
+- (IBAction)save:(id)sender
+{
+    detailsViewController.cage.cageNumber = [[detailsViewController.view textFieldWithTag:MHCageNumberTextFieldTag] text];
+    NSError *error = nil;
+    [[_cage managedObjectContext] save:&error];
+    [self configureCageView];
+    [cageDetailsPopover dismissPopoverAnimated:YES];
+}
+
+-(IBAction)cancel:(id)sender
+{
+    [[_cage managedObjectContext] rollback];
+    [cageDetailsPopover dismissPopoverAnimated:YES];
+}
+
+-(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    [self cancel:nil];
+}
+
 @end

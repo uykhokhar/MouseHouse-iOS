@@ -1,22 +1,19 @@
 //
-//  Rack.m
+//  HealthCard.m
 //  MouseHouse-iOS
 //
 //  Created by Daniel Brajkovic on 4/17/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Rack.h"
-#import "Cage.h"
+#import "HealthCard.h"
+#import "Mouse.h"
 
 
-@implementation Rack
+@implementation HealthCard
 
-@dynamic columns;
+@dynamic comment;
 @dynamic createdOn;
-@dynamic label;
-@dynamic location;
-@dynamic rows;
-@dynamic cages;
+@dynamic mouse;
 
 @end
