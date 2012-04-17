@@ -54,6 +54,7 @@
 		65F4C907153DF8BC0052981A /* Rack.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F4C906153DF8BC0052981A /* Rack.m */; };
 		65F4C90A153DF8BC0052981A /* HealthCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F4C909153DF8BC0052981A /* HealthCard.m */; };
 		65F4C90D153DFA170052981A /* Cage.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F4C90C153DFA170052981A /* Cage.m */; };
+		65F4C910153E24DE0052981A /* MouseEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F4C90F153E24DE0052981A /* MouseEditViewController.m */; };
 		80F57E17153AB65800D91E7D /* MouseHouse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80F57E15153AB65800D91E7D /* MouseHouse.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +140,8 @@
 		65F4C909153DF8BC0052981A /* HealthCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthCard.m; sourceTree = "<group>"; };
 		65F4C90B153DFA170052981A /* Cage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cage.h; sourceTree = "<group>"; };
 		65F4C90C153DFA170052981A /* Cage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cage.m; sourceTree = "<group>"; };
+		65F4C90E153E24DE0052981A /* MouseEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MouseEditViewController.h; sourceTree = "<group>"; };
+		65F4C90F153E24DE0052981A /* MouseEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MouseEditViewController.m; sourceTree = "<group>"; };
 		80F57E16153AB65800D91E7D /* MouseHouse.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MouseHouse.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -356,6 +359,8 @@
 		65F4C8C1153DEBF60052981A /* Mice */ = {
 			isa = PBXGroup;
 			children = (
+				65F4C90E153E24DE0052981A /* MouseEditViewController.h */,
+				65F4C90F153E24DE0052981A /* MouseEditViewController.m */,
 			);
 			name = Mice;
 			sourceTree = "<group>";
@@ -499,6 +504,7 @@
 				65F4C907153DF8BC0052981A /* Rack.m in Sources */,
 				65F4C90A153DF8BC0052981A /* HealthCard.m in Sources */,
 				65F4C90D153DFA170052981A /* Cage.m in Sources */,
+				65F4C910153E24DE0052981A /* MouseEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

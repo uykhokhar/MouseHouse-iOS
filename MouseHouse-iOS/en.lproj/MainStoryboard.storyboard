@@ -198,7 +198,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="nRa-nS-UQO" kind="push" id="yVc-1G-cPO"/>
+                                    <segue destination="nRa-nS-UQO" kind="push" identifier="Edit Mouse Segue" id="yVc-1G-cPO"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Notice cell" textLabel="mL0-mu-KdS" style="IBUITableViewCellStyleDefault" id="XAY-Hl-n0W">
@@ -243,11 +243,11 @@
             </objects>
             <point key="canvasLocation" x="2984" y="11"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Mouse Edit View Controller-->
         <scene sceneID="FvO-9e-mWo">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7H0-gk-7X5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="nRa-nS-UQO" sceneMemberID="viewController">
+                <tableViewController id="nRa-nS-UQO" customClass="MouseEditViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="bmW-54-Kr3">
                         <rect key="frame" x="0.0" y="20" width="320" height="560"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -493,9 +493,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="Mr5-4c-vGE"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="earTagTextField" destination="FPf-qn-g1f" id="WLf-83-ZDw"/>
+                    </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="3354" y="1"/>
+            <point key="canvasLocation" x="3381" y="45"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LHW-fO-iR1">
@@ -985,6 +988,9 @@
                 <relationship kind="action" name="dismissAction:"/>
                 <relationship kind="action" name="signUpAction:"/>
             </relationships>
+        </class>
+        <class className="MouseEditViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MouseEditViewController.h"/>
         </class>
         <class className="RackEditViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RackEditViewController.h"/>

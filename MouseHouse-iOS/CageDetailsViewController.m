@@ -9,6 +9,7 @@
 #import "CageDetailsViewController.h"
 #import <CoreData/CoreData.h>
 #import "Mouse.h"
+#import "MouseEditViewController.h"
 
 @interface CageDetailsViewController ()
 
@@ -221,7 +222,15 @@
     _mice = [self.cage.mice allObjects];
     self.cage.cageNumber = [[self.view textFieldWithTag:MHCageNumberTextFieldTag] text];
     [self.tableView reloadData];
+    [self performSegueWithIdentifier:@"Edit Mouse Segue" sender:[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.cage.mice count] - 1 inSection:2]]];
 }
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    Mouse *mouse = [_mice objectAtIndex:[self.tableView indexPathForCell:sender].row];
+    MouseEditViewController *vc = segue.destinationViewController;
+    vc.mouse = mouse;
+}
+
 
 - (void)setCage:(Cage *)cage
 {
