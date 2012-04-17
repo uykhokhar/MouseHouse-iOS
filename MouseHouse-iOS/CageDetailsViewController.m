@@ -34,6 +34,7 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tableView.sectionHeaderHeight = 44;
 }
 
 - (void)viewDidUnload
@@ -53,7 +54,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 0;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -62,25 +63,78 @@
     NSInteger numberOfRows;
     switch (section) {
         case 0:
-            numberOfRows = 0;
+            numberOfRows = 1;
             break;
         case 1:
-            numberOfRows = 0;
+            numberOfRows = 3;
             break;
         default:
-            numberOfRows = 0;
+            numberOfRows = 5;
             break;
     }
 
     return numberOfRows;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 44)];
+    [headerView setBackgroundColor:[UIColor clearColor]];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, headerView.bounds.size.width, 44)];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont boldSystemFontOfSize:17.0];
+    label.shadowColor = [UIColor whiteColor];
+    label.shadowOffset = CGSizeMake(0, 1);
+    [headerView addSubview:label];
+    switch (section) {
+        case 0:
+            label.text = @"Cage Information";
+            break;
+        case 1:
+            label.text = @"Notices";
+            break;
+        default:
+            label.text = @"Mice";
+            break;
+    }    
+    return headerView;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    // Configure the cell...
+    NSString *cellIdentifier = @"Cell";
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+   
+    switch (indexPath.section) {
+        case 0:
+            cellIdentifier = @"Cage number cell";
+            cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+            break;
+        case 1:
+            cellIdentifier = @"Notice cell";
+            cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+            switch (indexPath.row) {
+                case 0:
+                    cell.textLabel.text = @"Health Notice";
+                    cell.textLabel.textColor = [UIColor redColor];
+                    break;
+                case 1:
+                    cell.textLabel.text = @"Overcrowding";
+                    cell.textLabel.textColor = [UIColor greenColor];
+                    break;    
+                default:
+                    cell.textLabel.text = @"Breeding Cage";
+                    cell.textLabel.textColor = [UIColor blueColor];
+                    break;
+            }
+            break;
+        default:
+            cellIdentifier = @"Mouse cell";
+            cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+            cell.textLabel.text = @"12345";
+            cell.detailTextLabel.text = @"Male";
+            break;
+    }
     
     return cell;
 }
@@ -136,6 +190,7 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 }
+
 
 - (void)setCage:(Cage *)cage
 {

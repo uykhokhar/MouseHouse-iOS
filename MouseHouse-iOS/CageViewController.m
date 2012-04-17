@@ -63,7 +63,6 @@ enum MHCageViewTags {
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"COL: %@  \n ROW: %@", _column, _row);
     UINavigationController *navController = (UINavigationController *)[segue destinationViewController] ;
     CageDetailsViewController *vc = [[navController viewControllers] objectAtIndex:0];
     NSManagedObjectContext *_editingContext = [[NSManagedObjectContext alloc] init];

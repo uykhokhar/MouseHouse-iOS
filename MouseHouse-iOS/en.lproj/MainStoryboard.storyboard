@@ -118,10 +118,10 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rbd-T0-ie3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="IFO-Jp-T4g" customClass="CageDetailsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="qeX-PO-rwN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="44" width="320" height="560"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <nil key="simulatedOrientationMetrics"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cage number cell" id="QYQ-rq-fmw">
                                 <rect key="frame" x="0.0" y="34" width="320" height="45"/>
@@ -140,7 +140,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cage number cell" textLabel="wZy-zz-CeX" style="IBUITableViewCellStyleDefault" id="hfe-Yw-1GW">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Breeding Cage Cell" textLabel="wZy-zz-CeX" style="IBUITableViewCellStyleDefault" id="hfe-Yw-1GW">
                                 <rect key="frame" x="0.0" y="79" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -159,8 +159,8 @@
                                 </view>
                                 <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cage number cell" textLabel="Bhz-CW-BXB" detailTextLabel="TsQ-0r-bZ5" style="IBUITableViewCellStyleValue2" id="Ect-MX-gi9">
-                                <rect key="frame" x="0.0" y="123" width="320" height="45"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Mouse cell" textLabel="Bhz-CW-BXB" detailTextLabel="TsQ-0r-bZ5" style="IBUITableViewCellStyleValue2" id="Ect-MX-gi9">
+                                <rect key="frame" x="0.0" y="123" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
@@ -184,11 +184,38 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Notice cell" textLabel="mL0-mu-KdS" style="IBUITableViewCellStyleDefault" id="XAY-Hl-n0W">
+                                <rect key="frame" x="0.0" y="167" width="320" height="45"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mL0-mu-KdS">
+                                            <rect key="frame" x="10" y="0.0" width="260" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
                         </prototypes>
                         <sections/>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Cage Details" id="g8p-9g-QwV"/>
-                    <value key="contentSizeForViewInPopover" type="size" width="320" height="480"/>
+                    <toolbarItems>
+                        <barButtonItem systemItem="action" id="l8U-g3-T65"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="aNh-cg-12e"/>
+                        <barButtonItem systemItem="add" id="khC-5i-Vsy"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Cage Details" id="g8p-9g-QwV">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ods-8M-IGQ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="6Sq-v0-Je9"/>
+                    </navigationItem>
+                    <value key="contentSizeForViewInPopover" type="size" width="320" height="560"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </tableViewController>
