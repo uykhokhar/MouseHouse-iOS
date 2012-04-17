@@ -10,6 +10,12 @@
 @class Rack;
 @class Cage;
 
+enum MHCageViewTags {
+    MHInactiveCageLabelTag = 10,
+    MHCageNumberLabelTag = 11,
+    MHNumberOfMiceLabelTag = 12
+};
+
 @interface CageViewController : UIViewController  <UIPopoverControllerDelegate>
 
 @property (strong, nonatomic) NSString *column;

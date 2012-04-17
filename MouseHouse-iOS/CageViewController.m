@@ -13,11 +13,6 @@
 #import "Cage.h"
 
 
-enum MHCageViewTags {
-    MHInactiveCageLabelTag = 10,
-    MHCageNumberLabelTag = 11
-    };
-
 @interface CageViewController ()
 {
     UIPopoverController *cageDetailsPopover;
@@ -51,6 +46,7 @@ enum MHCageViewTags {
     } else {
         [[self.view labelWithTag:MHInactiveCageLabelTag] setHidden:YES];
         [[self.view labelWithTag:MHCageNumberLabelTag] setText:_cage.cageNumber];
+        [[self.view labelWithTag:MHNumberOfMiceLabelTag] setText:[NSString stringWithFormat:@"%d", [_cage.mice count]]];
     }
 }
 

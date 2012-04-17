@@ -7,6 +7,8 @@
 //
 
 #import "CageDetailsViewController.h"
+#import <CoreData/CoreData.h>
+#import "Mouse.h"
 
 @interface CageDetailsViewController ()
 
@@ -17,6 +19,7 @@
 @synthesize cancelButton = _cancelButton;
 @synthesize doneButton = _doneButton;
 @synthesize cage = _cage;
+@synthesize mice = _mice;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -100,6 +103,7 @@
             break;
         default:
             addMouseButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
+            [addMouseButton addTarget:self action:@selector(addMouse:) forControlEvents:UIControlEventTouchUpInside];
             CGRect frame = addMouseButton.frame;
             frame.origin = CGPointMake(headerView.bounds.size.width - 36, 7);
             addMouseButton.frame = frame;
@@ -139,10 +143,11 @@
             }
             break;
         default:
-            if ([self.cage.mice count] > 0) {
+            if ([self.mice count] > 0) {
+                Mouse *mouse = [self.mice objectAtIndex:indexPath.row];
                 cellIdentifier = @"Mouse cell";
                 cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-                cell.textLabel.text = @"ear tag";
+                cell.textLabel.text = mouse.earTag;
                 cell.detailTextLabel.text = @"Sequence";
             } else {
                 cell.textLabel.text = @"No mice.";
@@ -206,26 +211,23 @@
      */
 }
 
+- (void)addMouse:(id)sender
+{
+    NSManagedObjectContext *moc = self.cage.managedObjectContext;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Mouse" inManagedObjectContext:moc];
+    Mouse *newMouse = [[Mouse alloc] initWithEntity:entity insertIntoManagedObjectContext:moc];
+    newMouse.earTag = @"1234";
+    [self.cage addMiceObject:newMouse];
+    _mice = [self.cage.mice allObjects];
+    self.cage.cageNumber = [[self.view textFieldWithTag:MHCageNumberTextFieldTag] text];
+    [self.tableView reloadData];
+}
 
 - (void)setCage:(Cage *)cage
 {
     _cage = cage;
+    _mice = [_cage.mice allObjects];
     [self.tableView reloadData];
 }
 
-- (IBAction)addMouseAction:(id)sender
-{
-    
-}
-
-- (IBAction)cancelAction:(id)sender
-{
-    
-    [[_cage managedObjectContext] rollback];
-}
-
-- (IBAction)doneAction:(id)sender
-{
-    
-}
 @end

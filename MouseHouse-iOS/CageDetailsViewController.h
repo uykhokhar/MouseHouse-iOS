@@ -19,5 +19,6 @@ enum MHCageDetailsTags {
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (strong, nonatomic) Cage *cage;
+@property (strong, nonatomic) NSArray *mice;
 
 @end
