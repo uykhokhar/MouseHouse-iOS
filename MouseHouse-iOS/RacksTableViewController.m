@@ -69,11 +69,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     RackEditViewController *vc = [segue destinationViewController];
-    [vc setRack:self.rackViewController.rack];
     if ([@"Edit Segue" isEqualToString:[segue identifier]]) {
         vc.navigationItem.title = @"Edit Rack";
+        [vc setRack:self.rackViewController.rack];
     } else if ([@"Add Segue" isEqualToString:[segue identifier]]){
         vc.navigationItem.title = @"Add Rack";
+        [vc setRack:nil];
     }
 }
 
