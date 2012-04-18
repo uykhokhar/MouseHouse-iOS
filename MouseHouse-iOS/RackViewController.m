@@ -8,6 +8,7 @@
 
 #import "RackViewController.h"
 #import "CageViewController.h"
+#import "RacksTableViewController.h"
 
 @interface RackViewController () 
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -125,6 +126,14 @@
     [self setRackRowHeaderScrollView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    Rack *rack = [[(RacksTableViewController *)[(UINavigationController *)[[[self splitViewController] viewControllers] objectAtIndex:0] topViewController] fetchedResultsController] objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    self.rack = rack;
+    self.title = self.rack.label;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

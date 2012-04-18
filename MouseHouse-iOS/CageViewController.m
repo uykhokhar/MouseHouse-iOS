@@ -100,7 +100,8 @@
 {
     detailsViewController.cage.cageNumber = [[detailsViewController.view textFieldWithTag:MHCageNumberTextFieldTag] text];
     NSError *error = nil;
-    [[_cage managedObjectContext] save:&error];
+    [_rack addCagesObject:detailsViewController.cage];
+    [[_rack managedObjectContext] save:&error];
     [self configureCageView];
     [cageDetailsPopover dismissPopoverAnimated:YES];
 }
